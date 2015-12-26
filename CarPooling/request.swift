@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+enum requestStatus{
+    case approved
+    case pending
+    case rejected
+}
+
+struct request{
+    let requester:User?
+    let requestee:User?
+    var status:requestStatus
+}

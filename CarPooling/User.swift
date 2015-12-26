@@ -68,6 +68,4 @@ class User {
         self.photo = photo
     }
 
-
-
 }
