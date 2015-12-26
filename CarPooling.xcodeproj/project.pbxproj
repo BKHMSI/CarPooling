@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; settings = {ASSET_TAGS = (); }; };
+		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; settings = {ASSET_TAGS = (); }; };
 		6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937491C2EC03F0012F534 /* AppDelegate.swift */; };
 		6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39374D1C2EC03F0012F534 /* Main.storyboard */; };
 		6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937501C2EC03F0012F534 /* CarPooling.xcdatamodeld */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Model_UML_Iteration_1.pdf; sourceTree = "<group>"; };
+		41490F8A1C2F2B2600406751 /* request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = request.swift; sourceTree = "<group>"; };
 		6B3937461C2EC03F0012F534 /* CarPooling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarPooling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3937491C2EC03F0012F534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B39374E1C2EC03F0012F534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -74,9 +78,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41490F891C2F2AC900406751 /* UML */ = {
+			isa = PBXGroup;
+			children = (
+				41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */,
+			);
+			name = UML;
+			sourceTree = "<group>";
+		};
 		6B39373D1C2EC03F0012F534 = {
 			isa = PBXGroup;
 			children = (
+				41490F891C2F2AC900406751 /* UML */,
 				6B3937481C2EC03F0012F534 /* CarPooling */,
 				6B3937601C2EC03F0012F534 /* CarPoolingTests */,
 				6B39376B1C2EC03F0012F534 /* CarPoolingUITests */,
@@ -98,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				6B3937491C2EC03F0012F534 /* AppDelegate.swift */,
+				41490F8A1C2F2B2600406751 /* request.swift */,
 				6B39374D1C2EC03F0012F534 /* Main.storyboard */,
 				6B3937531C2EC03F0012F534 /* Assets.xcassets */,
 				6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */,
@@ -233,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B3937571C2EC03F0012F534 /* LaunchScreen.storyboard in Resources */,
+				41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */,
 				6B3937541C2EC03F0012F534 /* Assets.xcassets in Resources */,
 				6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */,
 			);
@@ -261,6 +276,7 @@
 			files = (
 				6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */,
 				6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */,
+				41490F8B1C2F2B2600406751 /* request.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +501,7 @@
 				6B3937731C2EC03F0012F534 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B3937741C2EC03F0012F534 /* Build configuration list for PBXNativeTarget "CarPoolingTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +510,7 @@
 				6B3937761C2EC03F0012F534 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B3937771C2EC03F0012F534 /* Build configuration list for PBXNativeTarget "CarPoolingUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +519,7 @@
 				6B3937791C2EC03F0012F534 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
