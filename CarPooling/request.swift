@@ -8,6 +8,7 @@
 
 import Foundation
 
+//MARK: Request Status
 enum requestStatus{
     case approved
     case pending
@@ -15,7 +16,10 @@ enum requestStatus{
 }
 
 struct Request{
+    //User Making the Request
     let requester:User?
+    //User requesting the request
     let requestee:User?
+    //status of request
     var status:requestStatus
 }
