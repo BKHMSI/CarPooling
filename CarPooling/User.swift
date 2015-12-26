@@ -10,9 +10,7 @@ import Foundation
 import UIKit
 
 class User {
-    var aucId:String
-    var userName:String
-    var password:String
+    var aucId:String, userName:String, password:String
     var mobile:NSNumber
     var photo:UIImage?
     var points:Int?
