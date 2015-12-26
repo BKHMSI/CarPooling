@@ -8,14 +8,14 @@
 
 import Foundation
 
-enum requestStatus{
+enum RequestStatus{
     case approved
     case pending
     case rejected
 }
 
-struct request{
+struct Request{
     let requester:User?
     let requestee:User?
-    var status:requestStatus
+    var status:RequestStatus
 }

@@ -24,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="501" y="465"/>
         </scene>
-        <!--ExploreVC-->
+        <!--Explore-->
         <scene sceneID="55p-Ug-K6W">
             <objects>
                 <viewController id="9ZO-bq-b3u" customClass="ExploreVC" customModule="CarPooling" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="dA4-oP-DDu"/>
+                    <tabBarItem key="tabBarItem" title="Explore" id="dA4-oP-DDu"/>
                     <connections>
                         <outlet property="mapView" destination="gCf-6A-Fwo" id="9Wj-ZM-3Xl"/>
                     </connections>
