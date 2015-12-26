@@ -14,7 +14,7 @@ enum requestStatus{
     case rejected
 }
 
-struct request{
+struct Request{
     let requester:User?
     let requestee:User?
     var status:requestStatus

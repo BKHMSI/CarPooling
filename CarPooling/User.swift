@@ -10,12 +10,16 @@ import Foundation
 import UIKit
 
 class User {
+    //MARK: Properties
+    
     var aucId:String
     var userName:String
     var password:String
     var mobile:NSNumber
     var photo:UIImage?
     var points:Int?
+    
+    //MARK: Initialiser
     
     init(aucId:String, userName:String, password:String, mobile:NSNumber){
         self.aucId = aucId
