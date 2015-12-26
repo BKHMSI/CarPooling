@@ -41,11 +41,7 @@ class User {
     }
     
     func getPoints()->Int{
-        if (points != nil){
-            return points!
-        }else {
-            return 0;
-        }
+        return points != nil ? points!:0
     }
     
     // MARK: Setters
