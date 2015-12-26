@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; settings = {ASSET_TAGS = (); }; };
-		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; settings = {ASSET_TAGS = (); }; };
+		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; };
+		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; };
 		6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937491C2EC03F0012F534 /* AppDelegate.swift */; };
 		6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39374D1C2EC03F0012F534 /* Main.storyboard */; };
 		6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937501C2EC03F0012F534 /* CarPooling.xcdatamodeld */; };
@@ -18,6 +18,7 @@
 		6B39376D1C2EC03F0012F534 /* CarPoolingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39376C1C2EC03F0012F534 /* CarPoolingUITests.swift */; };
 		6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377A1C2F1D410012F534 /* ExploreVC.swift */; };
 		6B39377D1C2F25020012F534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377C1C2F25020012F534 /* User.swift */; };
+		6B6E8BAA1C2F32BE0072962F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E8BA91C2F32BE0072962F /* Driver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		6B39376E1C2EC03F0012F534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B39377A1C2F1D410012F534 /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
 		6B39377C1C2F25020012F534 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6B6E8BA91C2F32BE0072962F /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				6B39374D1C2EC03F0012F534 /* Main.storyboard */,
 				6B39377A1C2F1D410012F534 /* ExploreVC.swift */,
 				6B39377C1C2F25020012F534 /* User.swift */,
+				6B6E8BA91C2F32BE0072962F /* Driver.swift */,
 				6B3937531C2EC03F0012F534 /* Assets.xcassets */,
 				6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */,
 				6B3937581C2EC03F0012F534 /* Info.plist */,
@@ -283,6 +286,7 @@
 				6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */,
 				6B39377D1C2F25020012F534 /* User.swift in Sources */,
 				6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */,
+				6B6E8BAA1C2F32BE0072962F /* Driver.swift in Sources */,
 				6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */,
 				41490F8B1C2F2B2600406751 /* request.swift in Sources */,
 			);
