@@ -45,6 +45,7 @@ class ProfileVC: UIViewController {
                     dispatch_async(dispatch_get_main_queue()) {
                         // User Signed In
                         print("User Signed In")
+                        self.profileLbl.text = "Wlecome Back \(user?.email)"
                         self.activityIndicator.stopAnimating()
                     }
                 } else {

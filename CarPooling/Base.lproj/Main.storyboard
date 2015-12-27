@@ -195,7 +195,7 @@
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <action selector="signUpBtnPressed:" destination="7j8-SO-eOw" eventType="touchUpInside" id="7pp-cO-6GR"/>
-                                    <segue destination="rMa-Yx-DhM" kind="unwind" unwindAction="unwindToProfileVC:" id="my6-mg-xb9"/>
+                                    <segue destination="rMa-Yx-DhM" kind="unwind" identifier="unwindToProfileVC" unwindAction="unwindToProfileVC:" id="my6-mg-xb9"/>
                                 </connections>
                             </button>
                         </subviews>

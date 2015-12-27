@@ -60,8 +60,7 @@ class SignUpVC: UIViewController {
                 style: UIAlertActionStyle.Default,
                 handler: nil)
             )
-            
-            
+        
             // Display alert
             self.presentViewController(alertController, animated: true, completion: nil)
         }
@@ -86,6 +85,8 @@ class SignUpVC: UIViewController {
         user.username = userEmailAddress
         user.password = userPassword
         user.email = userEmailAddress
+        user.setObject(mobileTxtFld.text!, forKey: "Mobile")
+        user.setObject(aucIdTxtFld.text!, forKey: "AUCID")
         
         user.signUpInBackgroundWithBlock {
             (succeeded: Bool, error: NSError?) -> Void in
@@ -110,6 +111,8 @@ class SignUpVC: UIViewController {
         userSingelton.setPassword(passwordTxtFld.text!)
         userSingelton.setUserName(emailTxtFld.text!)
         userSingelton.setMobile(mobileTxtFld.text!)
+        
+        // Store it in Core Data Here
     }
     
     // MARK: Validation Functions
