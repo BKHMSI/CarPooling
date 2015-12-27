@@ -9,14 +9,17 @@
 import Foundation
 import UIKit
 import Parse
+import CoreData
 
-class ProfileVC: UIViewController {
+class SignUpVC: UIViewController {
     
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var passwordTxtFld: UITextField!
     @IBOutlet weak var aucIdTxtFld: UITextField!
     @IBOutlet weak var mobileTxtFld: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var userSingelton = User.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +33,41 @@ class ProfileVC: UIViewController {
     
     @IBAction func signUpBtnPressed(sender: AnyObject) {
         // Build the terms and conditions alert
-        let alertController = UIAlertController(title: "Agree to terms and conditions",
-            message: "Click I AGREE to signal that you agree to the End User Licence Agreement.",
-            preferredStyle: UIAlertControllerStyle.Alert
-        )
-        alertController.addAction(UIAlertAction(title: "I AGREE",
-            style: UIAlertActionStyle.Default,
-            handler: { alertController in self.processSignUp()})
-        )
-        alertController.addAction(UIAlertAction(title: "I do NOT agree",
-            style: UIAlertActionStyle.Default,
-            handler: nil)
-        )
         
-        // Display alert
-        self.presentViewController(alertController, animated: true, completion: nil)
+        if(isAUCian() && isValidEmail()){
+            let alertController = UIAlertController(title: "Agree to terms and conditions",
+                message: "Click I AGREE to signal that you agree to the End User Licence Agreement.",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            alertController.addAction(UIAlertAction(title: "I AGREE",
+                style: UIAlertActionStyle.Default,
+                handler: { alertController in self.processSignUp()})
+            )
+            alertController.addAction(UIAlertAction(title: "I do NOT agree",
+                style: UIAlertActionStyle.Default,
+                handler: nil)
+            )
+            
+            // Display alert
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }else{
+            let alertController = UIAlertController(title: "You must be an AUCian",
+                message: "Make sure that you entered your correct AUC email address",
+                preferredStyle: UIAlertControllerStyle.Alert
+            )
+            
+            alertController.addAction(UIAlertAction(title: "OK",
+                style: UIAlertActionStyle.Default,
+                handler: nil)
+            )
+            
+            
+            // Display alert
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+       
     }
-    
     
     func processSignUp() {
         
@@ -55,8 +76,6 @@ class ProfileVC: UIViewController {
         
         // Ensure username is lowercase
         userEmailAddress = userEmailAddress!.lowercaseString
-        
-        // Add email address validation
         
         // Start activity indicator
         activityIndicator.hidden = false
@@ -72,7 +91,9 @@ class ProfileVC: UIViewController {
             (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 dispatch_async(dispatch_get_main_queue()) {
-                    self.performSegueWithIdentifier("signInToNavigation", sender: self)
+                    // Create User Object
+                    self.createUser()
+                    self.performSegueWithIdentifier("unwindToProfileVC", sender: self)
                 }
             } else {
                 self.activityIndicator.stopAnimating()
@@ -82,6 +103,31 @@ class ProfileVC: UIViewController {
                 }				
             }
         }
+    }
+    
+    func createUser(){
+        userSingelton.setId(aucIdTxtFld.text!)
+        userSingelton.setPassword(passwordTxtFld.text!)
+        userSingelton.setUserName(emailTxtFld.text!)
+        userSingelton.setMobile(mobileTxtFld.text!)
+    }
+    
+    // MARK: Validation Functions
+    
+    func isAUCian()->Bool{
+        if emailTxtFld.text?.containsString("aucegypt.edu") != nil{
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func isValidEmail() -> Bool {
+        let emailStr = emailTxtFld.text
+        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        
+        let email = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return email.evaluateWithObject(emailStr)
     }
   
 }

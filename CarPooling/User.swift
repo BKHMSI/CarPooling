@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 class User {
-    var aucId:String, userName:String, password:String
-    var mobile:NSNumber
+    static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "")
+    var aucId:String, userName:String, password:String, mobile:String
     var photo:UIImage?
     var points:Int?
     
-    init(aucId:String, userName:String, password:String, mobile:NSNumber){
+    init(aucId:String, userName:String, password:String, mobile:String){
         self.aucId = aucId
         self.userName = userName
         self.password = password
@@ -36,7 +36,7 @@ class User {
         return password;
     }
     
-    func getMobile()->NSNumber{
+    func getMobile()->String{
         return mobile;
     }
     
@@ -56,6 +56,10 @@ class User {
     
     func setPassword(password:String){
         self.password = password
+    }
+    
+    func setMobile(mobile:String){
+        self.mobile = mobile
     }
     
     func setPhoto(photo:UIImage){

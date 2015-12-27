@@ -41,21 +41,9 @@
                                 <animations/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
-                                    <segue destination="7j8-SO-eOw" kind="push" identifier="signUpSegue" id="xoL-Ae-cHH"/>
+                                    <segue destination="7j8-SO-eOw" kind="modal" identifier="signUpSegue" id="xoL-Ae-cHH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUY-Nq-0Vw">
-                                <rect key="frame" x="128" y="296" width="65" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Sign In"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-al-w54">
-                                <rect key="frame" x="20" y="85" width="280" height="38"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2aL-w9-JZd">
                                 <rect key="frame" x="20" y="225" width="79" height="30"/>
                                 <animations/>
@@ -82,20 +70,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUY-Nq-0Vw">
+                                <rect key="frame" x="128" y="296" width="65" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sign In"/>
+                                <connections>
+                                    <action selector="signInBtnPressed:" destination="T1k-VB-NnV" eventType="touchUpInside" id="Ptm-h1-Y8t"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-al-w54">
+                                <rect key="frame" x="20" y="85" width="280" height="38"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="x4N-bd-tUf">
+                                <rect key="frame" x="150" y="388" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" id="o8v-N8-RbW"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="x4N-bd-tUf" id="s8O-aX-A3Y"/>
+                        <outlet property="passwordTxtFld" destination="jwS-sb-MrF" id="OvT-w3-wbD"/>
+                        <outlet property="profileLbl" destination="NTX-al-w54" id="FJM-Px-0go"/>
+                        <outlet property="userNameTxtFld" destination="yUn-44-T9D" id="bNw-SG-Uja"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQA-Gn-Ppe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rMa-Yx-DhM" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="501" y="895"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6aV-Ie-U1N">
             <objects>
-                <viewController id="7j8-SO-eOw" customClass="ProfileVC" customModule="CarPooling" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7j8-SO-eOw" customClass="SignUpVC" customModule="CarPooling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="adZ-3v-NHS"/>
                         <viewControllerLayoutGuide type="bottom" id="r5Y-Hs-Wgp"/>
@@ -111,18 +125,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8i3-Ie-WVh">
-                                <rect key="frame" x="20" y="439" width="280" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="signUpBtnPressed:" destination="7j8-SO-eOw" eventType="touchUpInside" id="J0p-mP-CXx"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ngx-x3-IME">
-                                <rect key="frame" x="150" y="392" width="20" height="20"/>
-                                <animations/>
-                            </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onP-h1-sLp">
                                 <rect key="frame" x="20" y="150" width="46" height="30"/>
                                 <animations/>
@@ -175,6 +177,27 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8i3-Ie-WVh">
+                                <rect key="frame" x="20" y="436" width="110" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUpBtnPressed:" destination="7j8-SO-eOw" eventType="touchUpInside" id="J0p-mP-CXx"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Ngx-x3-IME">
+                                <rect key="frame" x="150" y="392" width="20" height="20"/>
+                                <animations/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUG-7s-8tA">
+                                <rect key="frame" x="196" y="436" width="110" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="signUpBtnPressed:" destination="7j8-SO-eOw" eventType="touchUpInside" id="7pp-cO-6GR"/>
+                                    <segue destination="rMa-Yx-DhM" kind="unwind" unwindAction="unwindToProfileVC:" id="my6-mg-xb9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

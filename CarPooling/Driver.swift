@@ -15,7 +15,7 @@ class Driver:User {
     private var pickUpLocation:CLLocation // PUL
     
     
-    init(aucId:String, userName:String, password:String, mobile:NSNumber, ept:NSDate, pul:CLLocation){
+    init(aucId:String, userName:String, password:String, mobile:String, ept:NSDate, pul:CLLocation){
         estimatedPickUpTime = ept // Estimated PickUp Time
         pickUpLocation = pul // Pick Up Location
         super.init(aucId: aucId, userName: userName, password: password, mobile: mobile)
