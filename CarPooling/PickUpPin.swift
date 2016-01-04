@@ -10,6 +10,10 @@ import Foundation
 import MapKit
 import Parse
 
+/*
+class must confrom to MKAnnotation protocol in order for annotations to be drawn on the map
+*/
+
 class PickUpPin: NSObject, MKAnnotation {
 
     var coordinate: CLLocationCoordinate2D
