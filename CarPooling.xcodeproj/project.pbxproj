@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; settings = {ASSET_TAGS = (); }; };
-		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; settings = {ASSET_TAGS = (); }; };
+		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; };
+		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; };
 		6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937491C2EC03F0012F534 /* AppDelegate.swift */; };
 		6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39374D1C2EC03F0012F534 /* Main.storyboard */; };
 		6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937501C2EC03F0012F534 /* CarPooling.xcdatamodeld */; };
@@ -16,6 +16,21 @@
 		6B3937571C2EC03F0012F534 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */; };
 		6B3937621C2EC03F0012F534 /* CarPoolingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937611C2EC03F0012F534 /* CarPoolingTests.swift */; };
 		6B39376D1C2EC03F0012F534 /* CarPoolingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39376C1C2EC03F0012F534 /* CarPoolingUITests.swift */; };
+		6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377A1C2F1D410012F534 /* ExploreVC.swift */; };
+		6B39377D1C2F25020012F534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377C1C2F25020012F534 /* User.swift */; };
+		6B6E8BAA1C2F32BE0072962F /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E8BA91C2F32BE0072962F /* Driver.swift */; };
+		6B6E8BAD1C2F3A590072962F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAB1C2F3A590072962F /* Bolts.framework */; };
+		6B6E8BAE1C2F3A590072962F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAC1C2F3A590072962F /* Parse.framework */; };
+		6B6E8BB01C2F3A980072962F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAF1C2F3A980072962F /* AudioToolbox.framework */; };
+		6B6E8BB21C2F3AA20072962F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BB11C2F3AA20072962F /* CFNetwork.framework */; };
+		6B6E8BB41C2F3AAC0072962F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BB31C2F3AAC0072962F /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B6E8BB61C2F3B2B0072962F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BB51C2F3B2B0072962F /* CoreLocation.framework */; };
+		6B6E8BB81C2F3B330072962F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BB71C2F3B330072962F /* QuartzCore.framework */; };
+		6B6E8BBA1C2F3B3C0072962F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BB91C2F3B3C0072962F /* Security.framework */; };
+		6B6E8BBC1C2F3B5F0072962F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BBB1C2F3B5F0072962F /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6B6E8BBE1C2F3B6C0072962F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BBD1C2F3B6C0072962F /* SystemConfiguration.framework */; };
+		6B6E8BC01C2F3B7A0072962F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BBF1C2F3B7A0072962F /* libz.tbd */; };
+		6B6E8BC21C2F3B870072962F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,21 @@
 		6B3937681C2EC03F0012F534 /* CarPoolingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarPoolingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B39376C1C2EC03F0012F534 /* CarPoolingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPoolingUITests.swift; sourceTree = "<group>"; };
 		6B39376E1C2EC03F0012F534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B39377A1C2F1D410012F534 /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreVC.swift; sourceTree = "<group>"; };
+		6B39377C1C2F25020012F534 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6B6E8BA91C2F32BE0072962F /* Driver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		6B6E8BAB1C2F3A590072962F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		6B6E8BAC1C2F3A590072962F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		6B6E8BAF1C2F3A980072962F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		6B6E8BB11C2F3AA20072962F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6B6E8BB31C2F3AAC0072962F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6B6E8BB51C2F3B2B0072962F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6B6E8BB71C2F3B330072962F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		6B6E8BB91C2F3B3C0072962F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		6B6E8BBB1C2F3B5F0072962F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		6B6E8BBD1C2F3B6C0072962F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6B6E8BBF1C2F3B7A0072962F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +88,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6E8BC21C2F3B870072962F /* libsqlite3.tbd in Frameworks */,
+				6B6E8BC01C2F3B7A0072962F /* libz.tbd in Frameworks */,
+				6B6E8BBE1C2F3B6C0072962F /* SystemConfiguration.framework in Frameworks */,
+				6B6E8BBC1C2F3B5F0072962F /* StoreKit.framework in Frameworks */,
+				6B6E8BBA1C2F3B3C0072962F /* Security.framework in Frameworks */,
+				6B6E8BB81C2F3B330072962F /* QuartzCore.framework in Frameworks */,
+				6B6E8BB61C2F3B2B0072962F /* CoreLocation.framework in Frameworks */,
+				6B6E8BB41C2F3AAC0072962F /* CoreGraphics.framework in Frameworks */,
+				6B6E8BB21C2F3AA20072962F /* CFNetwork.framework in Frameworks */,
+				6B6E8BB01C2F3A980072962F /* AudioToolbox.framework in Frameworks */,
+				6B6E8BAE1C2F3A590072962F /* Parse.framework in Frameworks */,
+				6B6E8BAD1C2F3A590072962F /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +131,7 @@
 		6B39373D1C2EC03F0012F534 = {
 			isa = PBXGroup;
 			children = (
+				6B6E8BC31C2F3BAB0072962F /* Frameworks */,
 				41490F891C2F2AC900406751 /* UML */,
 				6B3937481C2EC03F0012F534 /* CarPooling */,
 				6B3937601C2EC03F0012F534 /* CarPoolingTests */,
@@ -113,6 +156,9 @@
 				6B3937491C2EC03F0012F534 /* AppDelegate.swift */,
 				41490F8A1C2F2B2600406751 /* request.swift */,
 				6B39374D1C2EC03F0012F534 /* Main.storyboard */,
+				6B39377A1C2F1D410012F534 /* ExploreVC.swift */,
+				6B39377C1C2F25020012F534 /* User.swift */,
+				6B6E8BA91C2F32BE0072962F /* Driver.swift */,
 				6B3937531C2EC03F0012F534 /* Assets.xcassets */,
 				6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */,
 				6B3937581C2EC03F0012F534 /* Info.plist */,
@@ -137,6 +183,25 @@
 				6B39376E1C2EC03F0012F534 /* Info.plist */,
 			);
 			path = CarPoolingUITests;
+			sourceTree = "<group>";
+		};
+		6B6E8BC31C2F3BAB0072962F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */,
+				6B6E8BBF1C2F3B7A0072962F /* libz.tbd */,
+				6B6E8BBD1C2F3B6C0072962F /* SystemConfiguration.framework */,
+				6B6E8BBB1C2F3B5F0072962F /* StoreKit.framework */,
+				6B6E8BB91C2F3B3C0072962F /* Security.framework */,
+				6B6E8BB71C2F3B330072962F /* QuartzCore.framework */,
+				6B6E8BB51C2F3B2B0072962F /* CoreLocation.framework */,
+				6B6E8BB31C2F3AAC0072962F /* CoreGraphics.framework */,
+				6B6E8BB11C2F3AA20072962F /* CFNetwork.framework */,
+				6B6E8BAF1C2F3A980072962F /* AudioToolbox.framework */,
+				6B6E8BAB1C2F3A590072962F /* Bolts.framework */,
+				6B6E8BAC1C2F3A590072962F /* Parse.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +339,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */,
+				6B39377D1C2F25020012F534 /* User.swift in Sources */,
 				6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */,
+				6B6E8BAA1C2F32BE0072962F /* Driver.swift in Sources */,
 				6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */,
 				41490F8B1C2F2B2600406751 /* request.swift in Sources */,
 			);
@@ -416,10 +484,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CarPooling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.balkhamissi.CarPooling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -427,10 +501,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = CarPooling/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.balkhamissi.CarPooling;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
