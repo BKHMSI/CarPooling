@@ -18,34 +18,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="V4p-gW-YYv">
-                                <rect key="frame" x="0.0" y="20" width="320" height="449"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="285"/>
                                 <animations/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UgE-bn-Z7t">
-                                <rect key="frame" x="146" y="483" width="29" height="21"/>
+                                <rect key="frame" x="23" y="490" width="29" height="21"/>
                                 <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="sSO-vX-S7v"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="jra-RN-2kE">
+                                <rect key="frame" x="23" y="309" width="274" height="166"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="JmM-Ox-5Qj"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="473623111.27791899">
+                                    <!--2016-01-04 17:58:31 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpx-rD-Icd">
+                                <rect key="frame" x="260" y="483" width="37" height="28"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="SNv-Of-qrX"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveToDataToParse:" destination="rjl-gx-bu2" eventType="touchUpInside" id="6x6-ms-V7s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="V4p-gW-YYv" firstAttribute="leading" secondItem="1cd-DH-DaY" secondAttribute="leading" id="0Al-22-Pba"/>
-                            <constraint firstAttribute="trailing" secondItem="V4p-gW-YYv" secondAttribute="trailing" id="5bC-IP-zVu"/>
-                            <constraint firstItem="V4p-gW-YYv" firstAttribute="top" secondItem="mJH-ya-xDD" secondAttribute="bottom" id="603-5h-INl"/>
-                            <constraint firstItem="UgE-bn-Z7t" firstAttribute="top" secondItem="V4p-gW-YYv" secondAttribute="bottom" constant="14" id="Gqb-mG-1r7"/>
-                            <constraint firstItem="V4p-gW-YYv" firstAttribute="centerX" secondItem="UgE-bn-Z7t" secondAttribute="centerX" id="dXb-sw-7jK"/>
-                            <constraint firstItem="CEc-7v-BPT" firstAttribute="top" secondItem="UgE-bn-Z7t" secondAttribute="bottom" constant="15" id="ean-ya-gQa"/>
+                            <constraint firstItem="UgE-bn-Z7t" firstAttribute="top" secondItem="jra-RN-2kE" secondAttribute="bottom" constant="15" id="8lk-LA-OmI"/>
+                            <constraint firstItem="UgE-bn-Z7t" firstAttribute="leading" secondItem="jra-RN-2kE" secondAttribute="leading" id="Cb2-T9-JUS"/>
+                            <constraint firstItem="CEc-7v-BPT" firstAttribute="top" secondItem="UgE-bn-Z7t" secondAttribute="bottom" constant="8" symbolic="YES" id="Kfy-QL-f6A"/>
+                            <constraint firstItem="V4p-gW-YYv" firstAttribute="top" secondItem="mJH-ya-xDD" secondAttribute="bottom" id="KzM-gj-lEB"/>
+                            <constraint firstItem="V4p-gW-YYv" firstAttribute="leading" secondItem="1cd-DH-DaY" secondAttribute="leading" id="VVg-Mv-E3o"/>
+                            <constraint firstItem="jra-RN-2kE" firstAttribute="top" secondItem="V4p-gW-YYv" secondAttribute="bottom" constant="4" id="WCG-qQ-HA4"/>
+                            <constraint firstItem="Jpx-rD-Icd" firstAttribute="top" secondItem="jra-RN-2kE" secondAttribute="bottom" constant="8" symbolic="YES" id="Xof-29-MwQ"/>
+                            <constraint firstItem="CEc-7v-BPT" firstAttribute="top" secondItem="Jpx-rD-Icd" secondAttribute="bottom" constant="8" symbolic="YES" id="ac7-6l-jTU"/>
+                            <constraint firstAttribute="trailing" secondItem="V4p-gW-YYv" secondAttribute="trailing" id="aqr-gy-fTP"/>
+                            <constraint firstItem="jra-RN-2kE" firstAttribute="leading" secondItem="1cd-DH-DaY" secondAttribute="leadingMargin" constant="7" id="fFp-Hj-eLV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Jpx-rD-Icd" secondAttribute="trailing" constant="10" id="v3m-mQ-GgP"/>
+                            <constraint firstItem="V4p-gW-YYv" firstAttribute="centerX" secondItem="jra-RN-2kE" secondAttribute="centerX" id="xI4-MC-nGX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Driver" id="KIA-LR-DLF"/>
                     <connections>
                         <outlet property="mapView" destination="V4p-gW-YYv" id="crt-y0-zP5"/>
+                        <outlet property="pickUpTimePicker" destination="jra-RN-2kE" id="HAM-02-73N"/>
                         <outlet property="tempInfoLabel" destination="UgE-bn-Z7t" id="XHC-89-Axw"/>
                     </connections>
                 </viewController>

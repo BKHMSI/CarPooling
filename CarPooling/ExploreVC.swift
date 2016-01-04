@@ -39,7 +39,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     }
 
     /*
-    - This Function is called when the locationManager object determines current position
+    - This Function is  called when the locationManager object determines current position
     - Specifies desired region paramaters that the mapView will initially center on
     - Stop location updating in order to prevent this function from being called again unnecessarily
     - fetches locations data from servers
@@ -114,6 +114,45 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
 
     }
     
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView? {
+        if let annotation = annotation as? PickUpPin {
+            let identifier = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+                as? MKPinAnnotationView {
+                    dequeuedView.annotation = annotation
+                    view = dequeuedView
+            } else {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .ContactAdd) as UIView
+            }
+            return view
+        }
+        return nil
+    }
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        let name = (view.annotation?.title!)!
+        let alertController = UIAlertController(title: "Do you want to send a pick request to \(name)?",
+            message: nil,
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        alertController.addAction(UIAlertAction(title: "Send",
+            style: UIAlertActionStyle.Default,
+            handler: { alertController in print("Send Request")})
+        )
+        alertController.addAction(UIAlertAction(title: "Cancel",
+            style: UIAlertActionStyle.Default,
+            handler: nil)
+        )
+        
+        // Display alert
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+    }
 }
 
 

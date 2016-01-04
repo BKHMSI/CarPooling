@@ -23,10 +23,14 @@ class PickUpPin: NSObject, MKAnnotation {
     var driverID: String
     
     var title:String?{
+        let range = driverName.rangeOfString("@aucegypt.edu")
+        if let range = range {
+            driverName.removeRange(range)
+        }
         return driverName
     }
     var subtitle:String?{
-        return pickUpTime
+        return  "At: \(pickUpTime), Cell: \(driverMobile)"
     }
     
     init(coordinate: CLLocationCoordinate2D, pickUpTime: String, driverName:String, driverMobile:String, driverID: String){
@@ -43,7 +47,8 @@ class PickUpPin: NSObject, MKAnnotation {
         let pin = PFObject(className: "PickUpSpots")
         pin["pickUpLocation"] = location
         pin["pickUpTime"] = pickUpTime
-        pin["driver"] = PFUser.currentUser()?.objectId
+        let currentUser = PFUser(withoutDataWithObjectId: PFUser.currentUser()?.objectId)
+        pin["driver"] = currentUser
         pin.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
