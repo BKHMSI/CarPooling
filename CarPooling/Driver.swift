@@ -9,32 +9,28 @@
 import Foundation
 import UIKit
 import CoreLocation
+import Parse
 
-class Driver:User {
-    private var estimatedPickUpTime:NSDate // EPT
-    private var pickUpLocation:CLLocation // PUL
+class Driver1:User {
     
     
-    init(aucId:String, userName:String, password:String, mobile:String, ept:NSDate, pul:CLLocation){
-        estimatedPickUpTime = ept // Estimated PickUp Time
-        pickUpLocation = pul // Pick Up Location
-        super.init(aucId: aucId, userName: userName, password: password, mobile: mobile)
-    }
+//    weak var pickUpPoint : PickUpPin?
+//    
+//    //MARK: initialiser
+//    
+//    init(aucId:String, userName:String, password:String, mobile:String, pickUpTime:NSDate, pickUpLocation:CLLocation){
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "d-mmm-yyyy h:m a"
+//        super.init(aucId: aucId, userName: userName, password: password, mobile: mobile)
+//        pickUpPoint = PickUpPin(coordinate: pickUpLocation.coordinate, pickUpTime: dateFormatter.stringFromDate(pickUpTime), driver: self)
+//    }
+//    
+//    init(parseUser: PFUser){
+//        let cascadedAucId = parseUser["AUCID"] as! String
+//        let cascadedUserName = parseUser.username!
+//        let cascadedPassword = parseUser.password!
+//        let cascededMobile = parseUser["Mobile"] as! String
+//        super.init(aucId: cascadedAucId, userName: cascadedUserName, password: cascadedPassword, mobile: )
+//    }
     
-    func setEPT(ept: NSDate){
-        estimatedPickUpTime = ept
-    }
-    
-    func setPUL(pul: CLLocation){
-        pickUpLocation = pul
-    }
-    
-    func getEPT()->NSDate{
-        return estimatedPickUpTime
-    }
-    
-    func getPUL()->CLLocation{
-        return pickUpLocation
-    }
-
 }

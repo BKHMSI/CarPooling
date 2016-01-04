@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class User {
     static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "")
-    var aucId:String, userName:String, password:String, mobile:String
+    var aucId:String, userName:String, password:String?, mobile:String
     var photo:UIImage?
     var points:Int?
     
@@ -33,7 +34,7 @@ class User {
     }
     
     func getPassword()->String{
-        return password;
+        return password!;
     }
     
     func getMobile()->String{
@@ -43,6 +44,7 @@ class User {
     func getPoints()->Int{
         return points != nil ? points!:0
     }
+    
     
     // MARK: Setters
     
@@ -65,5 +67,6 @@ class User {
     func setPhoto(photo:UIImage){
         self.photo = photo
     }
+    
 
 }

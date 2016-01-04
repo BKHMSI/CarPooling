@@ -86,14 +86,18 @@ class SignUpVC: UIViewController {
         user.username = userEmailAddress
         user.password = userPassword
         user.email = userEmailAddress
+        user["AUCID"] = aucIdTxtFld.text!
+        user["Mobile"] = mobileTxtFld.text!
         
         user.signUpInBackgroundWithBlock {
+            
             (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 dispatch_async(dispatch_get_main_queue()) {
                     // Create User Object
-                    self.createUser()
-                    self.performSegueWithIdentifier("unwindToProfileVC", sender: self)
+                    self.createUser(user)
+                    self.activityIndicator.stopAnimating()
+                    print("User Created Successfully, account awaiting confirmation\n")
                 }
             } else {
                 self.activityIndicator.stopAnimating()
@@ -105,7 +109,7 @@ class SignUpVC: UIViewController {
         }
     }
     
-    func createUser(){
+    func createUser(user:PFUser){
         userSingelton.setId(aucIdTxtFld.text!)
         userSingelton.setPassword(passwordTxtFld.text!)
         userSingelton.setUserName(emailTxtFld.text!)

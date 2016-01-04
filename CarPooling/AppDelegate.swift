@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.setApplicationId("7UIjSs0qgDHLOXVCul4VgLgCWuzc9LEzFacn0M7W",
             clientKey: "AgulLWp3MEkANfVZSlFIqs8ttTRl8lDwyNF7Zwbz")
+        PFUser.enableRevocableSessionInBackground()
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
