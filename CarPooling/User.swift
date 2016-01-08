@@ -12,14 +12,7 @@ import Parse
 
 class User {
     static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "")
-    var aucId:String {
-        get{
-            return ""
-        }
-        set(newValue){
-            aucId = newValue
-        }
-    }
+    var aucId:String 
     var userName:String
     var password:String?
     var mobile:String
