@@ -88,19 +88,10 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 
                 if error == nil {
-                    // The find succeeded.
                     print("Successfully retrieved \(objects!.count) scores.")
-                    // Do something with the found objects
                     if let allObjects = objects {
                         for eachObject in allObjects {
-                            let pickUpCoordinates = CLLocationCoordinate2D(latitude: (eachObject["pickUpLocation"] as! PFGeoPoint).latitude, longitude: (eachObject["pickUpLocation"] as! PFGeoPoint).longitude)
-                            let pickUpTime = eachObject["pickUpTime"] as! String
-                            let driverInfo = eachObject["driver"] as! PFUser
-                            let driverName:String = driverInfo.username!
-                            let driverMobile:String = driverInfo["Mobile"] as! String
-                            let driverID:String = driverInfo["AUCID"] as! String
-                            let pickUpPoint = PickUpPin(coordinate: pickUpCoordinates, pickUpTime: pickUpTime, driverName: driverName, driverMobile: driverMobile, driverID: driverID)
-                            self.pickLocations.append(pickUpPoint)
+                            self.pickLocations.append(eachObject.convertPFObjectToPickUpPin())
                         }
                         
                         self.mapView.addAnnotations(self.pickLocations)
@@ -114,7 +105,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
 
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView? {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? PickUpPin {
             let identifier = "pin"
             var view: MKPinAnnotationView

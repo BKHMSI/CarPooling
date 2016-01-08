@@ -14,6 +14,22 @@ import Parse
 class must confrom to MKAnnotation protocol in order for annotations to be drawn on the map
 */
 
+extension PFObject{
+    /**
+    Incredibly Dangerous if object is NOT a PickUpPin
+    */
+    func convertPFObjectToPickUpPin()->PickUpPin{
+        let eachObject = self
+        let pickUpCoordinates = CLLocationCoordinate2D(latitude: (eachObject["pickUpLocation"] as! PFGeoPoint).latitude, longitude: (eachObject["pickUpLocation"] as! PFGeoPoint).longitude)
+        let pickUpTime = eachObject["pickUpTime"] as! String
+        let driverInfo = eachObject["driver"] as! PFUser
+        let driverName:String = driverInfo.username!
+        let driverMobile:String = driverInfo["Mobile"] as! String
+        let driverID:String = driverInfo["AUCID"] as! String
+        return PickUpPin(coordinate: pickUpCoordinates, pickUpTime: pickUpTime, driverName: driverName, driverMobile: driverMobile, driverID: driverID)
+    }
+}
+
 class PickUpPin: NSObject, MKAnnotation {
 
     var coordinate: CLLocationCoordinate2D
@@ -58,4 +74,6 @@ class PickUpPin: NSObject, MKAnnotation {
             }
         })
     }
+
+ 
 }

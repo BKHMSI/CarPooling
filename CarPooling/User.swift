@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import Parse
 
+extension PFUser{
+    
+}
+
 class User {
     static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "")
     var aucId:String 
@@ -70,6 +74,5 @@ class User {
     func setPhoto(photo:UIImage){
         self.photo = photo
     }
-    
 
 }
