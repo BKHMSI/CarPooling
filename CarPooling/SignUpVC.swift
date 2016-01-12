@@ -17,14 +17,11 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var passwordTxtFld: UITextField!
     @IBOutlet weak var aucIdTxtFld: UITextField!
     @IBOutlet weak var mobileTxtFld: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var userSingelton = User.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidden = true
-        activityIndicator.hidesWhenStopped = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,10 +74,6 @@ class SignUpVC: UIViewController {
         // Ensure username is lowercase
         userEmailAddress = userEmailAddress!.lowercaseString
         
-        // Start activity indicator
-        activityIndicator.hidden = false
-        activityIndicator.startAnimating()
-        
         // Create the user
         let user = PFUser()
         user.username = userEmailAddress
@@ -96,11 +89,9 @@ class SignUpVC: UIViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     // Create User Object
                     self.createUser(user)
-                    self.activityIndicator.stopAnimating()
                     print("User Created Successfully, account awaiting confirmation\n")
                 }
             } else {
-                self.activityIndicator.stopAnimating()
                 if let message: AnyObject = error!.userInfo["error"] {
                     //self.message.text = "\(message)"
                     print("Error: \(message)")

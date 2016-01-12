@@ -45,8 +45,9 @@ class PickUpPin: NSObject, MKAnnotation {
         }
         return driverName
     }
+    
     var subtitle:String?{
-        return  "At: \(pickUpTime), Cell: \(driverMobile)"
+        return  "At: \(pickUpTime) Cell: \(driverMobile)"
     }
     
     init(coordinate: CLLocationCoordinate2D, pickUpTime: String, driverName:String, driverMobile:String, driverID: String){
