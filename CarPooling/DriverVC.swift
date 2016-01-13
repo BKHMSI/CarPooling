@@ -16,6 +16,7 @@ class DriverVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     var pin : PickUpPin?
     let locManager = CLLocationManager()
     var lastRegion = MKCoordinateRegion()
+    var pinLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +49,8 @@ class DriverVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             )
             
             let touchPoint : CGPoint = gestureRecognizer.locationInView(mapView)
-            let touchCoordinates = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
-            pin = PickUpPin(coordinate: touchCoordinates, pickUpTime: "Temp", driverName: "Temp", driverMobile: "", driverID: "")
+            pinLocation = mapView.convertPoint(touchPoint, toCoordinateFromView: mapView)
+            pin = PickUpPin(coordinate: pinLocation, pickUpTime: "Temp", driverName: "Temp", driverMobile: "", driverID: "")
             mapView.addAnnotation(pin!)
         }
     }
@@ -77,6 +78,12 @@ class DriverVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    
+    @IBAction func nextBtnPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("goToScheduleSegue", sender: self)
+    }
+    
+    
     /*
     TODO: 
     Construct annotation object - DONE!
@@ -84,14 +91,16 @@ class DriverVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     save annotation object to PF - DONE! 
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if(segue.identifier == "goToScheduleSegue"){
+            let pickUpScheduleVC = segue.destinationViewController as! PickUpScheduleVC
+            pickUpScheduleVC.defaultLocation = pinLocation
+        }
     }
-    */
+
 
 }

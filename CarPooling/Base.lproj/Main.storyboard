@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -71,7 +72,8 @@
                     <navigationItem key="navigationItem" title="Set Default Location" id="8mR-ub-97H">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="afC-c6-y8P">
                             <connections>
-                                <segue destination="zTq-f0-Lry" kind="show" id="Hxj-AG-GrA"/>
+                                <action selector="nextBtnPressed:" destination="rjl-gx-bu2" id="7fx-ZU-GYS"/>
+                                <segue destination="zTq-f0-Lry" kind="show" identifier="goToScheduleSegue" id="Hxj-AG-GrA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -86,7 +88,7 @@
         <!--Your Pick Up Schedule-->
         <scene sceneID="HrB-RD-j77">
             <objects>
-                <viewController id="zTq-f0-Lry" sceneMemberID="viewController">
+                <viewController id="zTq-f0-Lry" customClass="PickUpScheduleVC" customModule="CarPooling" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HQA-2r-kY4"/>
                         <viewControllerLayoutGuide type="bottom" id="O7K-j8-ijL"/>
@@ -95,32 +97,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-Zd-iah">
-                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="LZ1-r9-Of9"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="Sunday"/>
-                                    <segment title="Monday"/>
-                                    <segment title="Tuesday"/>
-                                    <segment title="Wednesday"/>
-                                    <segment title="Thursday"/>
-                                    <segment title="Friday"/>
-                                    <segment title="Saturday"/>
-                                </segments>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="LZ1-r9-Of9"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="LZ1-r9-Of9"/>
-                                    </mask>
-                                </variation>
-                            </segmentedControl>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="vQW-GY-zYz">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
                                 <animations/>
@@ -137,6 +113,9 @@
                                         <include reference="q7G-ns-OlH"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="zTq-f0-Lry" eventType="valueChanged" id="1CY-6d-cse"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Pick Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaQ-Ru-ci0">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -162,7 +141,8 @@
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
                                 <animations/>
                                 <connections>
-                                    <segue destination="aZt-Jd-cul" kind="presentation" id="dLY-B9-737"/>
+                                    <action selector="switchChangedState:" destination="zTq-f0-Lry" eventType="valueChanged" id="MBQ-Db-2US"/>
+                                    <segue destination="aZt-Jd-cul" kind="presentation" identifier="goToMapSegue" id="dLY-B9-737"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hkb-L9-e0Z">
@@ -185,6 +165,35 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-Zd-iah">
+                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="LZ1-r9-Of9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Sunday"/>
+                                    <segment title="Monday"/>
+                                    <segment title="Tuesday"/>
+                                    <segment title="Wednesday"/>
+                                    <segment title="Thursday"/>
+                                    <segment title="Friday"/>
+                                    <segment title="Saturday"/>
+                                </segments>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LZ1-r9-Of9"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="LZ1-r9-Of9"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="segmentedControlIndexChanged:" destination="zTq-f0-Lry" eventType="valueChanged" id="F6C-wi-Y6M"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -206,58 +215,71 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="M5y-Zd-iah"/>
                                 <exclude reference="vQW-GY-zYz"/>
                                 <exclude reference="OaQ-Ru-ci0"/>
                                 <exclude reference="k1i-sA-k5c"/>
                                 <exclude reference="hkb-L9-e0Z"/>
+                                <exclude reference="M5y-Zd-iah"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="8KR-B1-ujd"/>
-                                <exclude reference="9Xb-fi-ljH"/>
-                                <exclude reference="ieU-fD-zrd"/>
-                                <exclude reference="HqQ-pR-y7X"/>
-                                <exclude reference="XdY-8b-I3T"/>
                                 <exclude reference="1Hv-nE-1tD"/>
                                 <exclude reference="68C-7w-sjj"/>
                                 <exclude reference="Ku3-gk-ZyW"/>
+                                <exclude reference="ffH-Ac-7ur"/>
+                                <exclude reference="s0r-oF-gsy"/>
+                                <exclude reference="HqQ-pR-y7X"/>
+                                <exclude reference="XdY-8b-I3T"/>
                                 <exclude reference="5dI-Xz-ojG"/>
                                 <exclude reference="OK1-WJ-Wd7"/>
                                 <exclude reference="VEH-eb-g5M"/>
                                 <exclude reference="b9z-2m-bS1"/>
-                                <exclude reference="ffH-Ac-7ur"/>
-                                <exclude reference="s0r-oF-gsy"/>
+                                <exclude reference="8KR-B1-ujd"/>
+                                <exclude reference="9Xb-fi-ljH"/>
+                                <exclude reference="ieU-fD-zrd"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="subviews">
-                                <include reference="M5y-Zd-iah"/>
                                 <include reference="vQW-GY-zYz"/>
                                 <include reference="OaQ-Ru-ci0"/>
                                 <include reference="k1i-sA-k5c"/>
                                 <include reference="hkb-L9-e0Z"/>
+                                <include reference="M5y-Zd-iah"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="8KR-B1-ujd"/>
-                                <include reference="9Xb-fi-ljH"/>
-                                <include reference="ieU-fD-zrd"/>
-                                <include reference="HqQ-pR-y7X"/>
-                                <include reference="XdY-8b-I3T"/>
                                 <include reference="1Hv-nE-1tD"/>
                                 <include reference="68C-7w-sjj"/>
                                 <include reference="Ku3-gk-ZyW"/>
+                                <include reference="ffH-Ac-7ur"/>
+                                <include reference="s0r-oF-gsy"/>
+                                <include reference="HqQ-pR-y7X"/>
+                                <include reference="XdY-8b-I3T"/>
                                 <include reference="5dI-Xz-ojG"/>
                                 <include reference="OK1-WJ-Wd7"/>
                                 <include reference="VEH-eb-g5M"/>
                                 <include reference="b9z-2m-bS1"/>
-                                <include reference="ffH-Ac-7ur"/>
-                                <include reference="s0r-oF-gsy"/>
+                                <include reference="8KR-B1-ujd"/>
+                                <include reference="9Xb-fi-ljH"/>
+                                <include reference="ieU-fD-zrd"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Pick Up Schedule" id="yIs-j4-phE"/>
+                    <navigationItem key="navigationItem" title="Your Pick Up Schedule" id="yIs-j4-phE">
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="lsZ-s1-MGp">
+                            <connections>
+                                <action selector="submitBtnPressed:" destination="zTq-f0-Lry" id="iPW-XV-w2r"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="slider" destination="vQW-GY-zYz" id="FDa-Ga-Gd2"/>
+                        <outlet property="switchToMap" destination="k1i-sA-k5c" id="UDV-ye-Yp1"/>
+                        <outlet property="timeLbl" destination="OaQ-Ru-ci0" id="l5t-Yh-khI"/>
+                        <outlet property="weekSegment" destination="M5y-Zd-iah" id="mq5-fg-je2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgS-h0-hJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="B0r-gY-xOO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1737" y="999"/>
         </scene>
@@ -417,7 +439,6 @@
         <!--Item-->
         <scene sceneID="M66-bG-YYG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BNe-3t-hpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="wC8-fL-QGB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gps-nq-3HR"/>
@@ -445,6 +466,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="545-D1-AaG"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BNe-3t-hpG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="879" y="-512"/>
         </scene>
@@ -700,7 +722,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ina-5d-ZWm">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ina-5d-ZWm">
                                 <rect key="frame" x="0.0" y="166" width="600" height="434"/>
                                 <animations/>
                             </mapView>
@@ -709,7 +731,11 @@
                                 <animations/>
                                 <items>
                                     <navigationItem title="Press and hold at desired location" id="Rrm-WR-lMI">
-                                        <barButtonItem key="leftBarButtonItem" title="Done" id="Rad-QY-aTa"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Done" id="Rad-QY-aTa">
+                                            <connections>
+                                                <segue destination="B0r-gY-xOO" kind="unwind" unwindAction="unwindForGoToMapSegue:towardsViewController:" id="Wzg-HM-wTW"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="odg-CD-uGE"/>
                                     </navigationItem>
                                 </items>

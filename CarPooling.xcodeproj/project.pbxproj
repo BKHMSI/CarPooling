@@ -11,6 +11,7 @@
 		412A192E1C38A15C00D602A0 /* PickUpPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412A192D1C38A15C00D602A0 /* PickUpPin.swift */; };
 		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; };
 		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; };
+		6B1B6AEE1C45C46100E92BE7 /* PickUpScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B1B6AED1C45C46100E92BE7 /* PickUpScheduleVC.swift */; };
 		6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937491C2EC03F0012F534 /* AppDelegate.swift */; };
 		6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B39374D1C2EC03F0012F534 /* Main.storyboard */; };
 		6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B3937501C2EC03F0012F534 /* CarPooling.xcdatamodeld */; };
@@ -58,6 +59,7 @@
 		412A192D1C38A15C00D602A0 /* PickUpPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickUpPin.swift; path = CarPooling/PickUpPin.swift; sourceTree = "<group>"; };
 		41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Model_UML_Iteration_1.pdf; sourceTree = "<group>"; };
 		41490F8A1C2F2B2600406751 /* request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = request.swift; path = CarPooling/request.swift; sourceTree = "<group>"; };
+		6B1B6AED1C45C46100E92BE7 /* PickUpScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickUpScheduleVC.swift; path = CarPooling/PickUpScheduleVC.swift; sourceTree = "<group>"; };
 		6B3937461C2EC03F0012F534 /* CarPooling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarPooling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B3937491C2EC03F0012F534 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B39374E1C2EC03F0012F534 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				6BFD9C441C2FF8060030E009 /* SignUpVC.swift */,
 				6BFD9C461C2FFE720030E009 /* ProfileVC.swift */,
 				6B39377A1C2F1D410012F534 /* ExploreVC.swift */,
+				6B1B6AED1C45C46100E92BE7 /* PickUpScheduleVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */,
 				412A192E1C38A15C00D602A0 /* PickUpPin.swift in Sources */,
 				6BFD9C471C2FFE720030E009 /* ProfileVC.swift in Sources */,
+				6B1B6AEE1C45C46100E92BE7 /* PickUpScheduleVC.swift in Sources */,
 				6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */,
 				41490F8B1C2F2B2600406751 /* request.swift in Sources */,
 			);
