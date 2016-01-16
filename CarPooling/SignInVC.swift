@@ -28,6 +28,11 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if(PFUser.currentUser() != nil){
+            self.performSegueWithIdentifier("goToAppSegue", sender: self)
+        }
+    }
     
     @IBAction func signInBtnPressed(sender: AnyObject) {
         activityIndicator.hidden = false
@@ -47,6 +52,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
                         // User Signed In
                         print("User Signed In")
                         self.activityIndicator.stopAnimating()
+                        self.performSegueWithIdentifier("goToAppSegue", sender: self)
                     }
                 } else {
                     self.activityIndicator.stopAnimating()
