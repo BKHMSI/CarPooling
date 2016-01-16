@@ -8,9 +8,10 @@
 
 import Foundation
 import UIKit
+import Social
 import Parse
 
-class ProfileVC: UIViewController {
+class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var profileLbl: UILabel!
     @IBOutlet weak var userNameTxtFld: UITextField!
@@ -84,6 +85,24 @@ class ProfileVC: UIViewController {
         }
     }
     
+    @IBAction func fbBtnPressed(sender: AnyObject) {
+        let alertController = UIAlertController(
+            title: "Email address verification",
+            message: "We have to verify first that you are from AUC",
+            preferredStyle: UIAlertControllerStyle.Alert
+        )
+        alertController.addAction(UIAlertAction(title: "OK",
+            style: UIAlertActionStyle.Default,
+            handler: { alertController in self.processSignOut()})
+        )
+        // Display alert
+        self.presentViewController(
+            alertController,
+            animated: true,
+            completion: nil
+        )
+    }
+    
     func processSignOut() {
         // Sign out
         PFUser.logOut()
@@ -92,4 +111,30 @@ class ProfileVC: UIViewController {
     @IBAction func unwindToProfileVC(segue: UIStoryboardSegue){
         // User Signed Up Successfully // Display his/her info
     }
+    
+    // Mark: Facebook
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        if ((error) != nil)
+        {
+            // Process error
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email")
+            {
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
+
 }

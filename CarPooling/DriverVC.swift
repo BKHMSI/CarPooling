@@ -99,6 +99,7 @@ class DriverVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         if(segue.identifier == "goToScheduleSegue"){
             let pickUpScheduleVC = segue.destinationViewController as! PickUpScheduleVC
             pickUpScheduleVC.defaultLocation = pinLocation
+            
         }
     }
 

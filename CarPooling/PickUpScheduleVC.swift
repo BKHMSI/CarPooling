@@ -27,7 +27,7 @@ extension Int{
 class PickUpScheduleVC: UIViewController {
     
     var userSingelton = User.sharedInstance
-    let defaultLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var defaultLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var customLocation:CLLocationCoordinate2D =  CLLocationCoordinate2D()
     var prevIndex = 0
     
@@ -149,6 +149,7 @@ class PickUpScheduleVC: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
     }
 
     

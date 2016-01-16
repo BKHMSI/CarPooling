@@ -11,21 +11,72 @@ import UIKit
 import Parse
 import CoreData
 
-class SignUpVC: UIViewController {
+extension UIImage {
+    var rounded: UIImage? {
+        let imageView = UIImageView(image: self)
+        imageView.layer.cornerRadius = min(size.height/2, size.width/2)
+        imageView.layer.masksToBounds = true
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+    var circle: UIImage? {
+        let square = CGSize(width: min(size.width, size.height), height: min(size.width, size.height))
+        let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: square))
+        imageView.contentMode = .ScaleAspectFill
+        imageView.image = self
+        imageView.layer.cornerRadius = square.width/2
+        imageView.layer.masksToBounds = true
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        imageView.layer.renderInContext(context)
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return result
+    }
+}
+
+class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var emailTxtFld: UITextField!
     @IBOutlet weak var passwordTxtFld: UITextField!
     @IBOutlet weak var aucIdTxtFld: UITextField!
     @IBOutlet weak var mobileTxtFld: UITextField!
+    @IBOutlet weak var fbBtn: FBSDKLoginButton!
+    @IBOutlet weak var profileImgView: UIImageView!
+    @IBOutlet weak var fullNameTxtFld: UITextField!
     
     var userSingelton = User.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (FBSDKAccessToken.currentAccessToken() != nil){
+            // User is already logged in, do work such as go to next view controller.
+            displayUserData()
+        }else{
+            fbBtn = FBSDKLoginButton()
+            fbBtn.readPermissions = ["public_profile", "email", "user_friends","user_birthday","user_about_me","user_posts"]
+            fbBtn.delegate = self
+        }
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     @IBAction func signUpBtnPressed(sender: AnyObject) {
@@ -63,7 +114,7 @@ class SignUpVC: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         
-       
+        
     }
     
     func processSignUp() {
@@ -83,7 +134,6 @@ class SignUpVC: UIViewController {
         user["Mobile"] = mobileTxtFld.text!
         
         user.signUpInBackgroundWithBlock {
-            
             (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 dispatch_async(dispatch_get_main_queue()) {
@@ -95,7 +145,7 @@ class SignUpVC: UIViewController {
                 if let message: AnyObject = error!.userInfo["error"] {
                     //self.message.text = "\(message)"
                     print("Error: \(message)")
-                }				
+                }
             }
         }
     }
@@ -105,6 +155,14 @@ class SignUpVC: UIViewController {
         userSingelton.setPassword(passwordTxtFld.text!)
         userSingelton.setUserName(emailTxtFld.text!)
         userSingelton.setMobile(mobileTxtFld.text!)
+    }
+    
+    func circleImageView(){
+        
+        // Circle
+        self.profileImgView.layer.cornerRadius = self.profileImgView.frame.size.width / 2;
+        self.profileImgView.clipsToBounds = true;
+        
     }
     
     // MARK: Validation Functions
@@ -124,5 +182,63 @@ class SignUpVC: UIViewController {
         let email = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return email.evaluateWithObject(emailStr)
     }
-  
+    
+    
+    // Mark: Facebook
+    
+    func displayUserData(){
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters:["fields": "email, name, education"])
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+            if ((error) != nil){
+                // Process error
+                print("Error: \(error)")
+            }else{
+                print("Results: \n \(result)")
+
+                if let userName : NSString = result.valueForKey("name") as? NSString{
+                    self.fullNameTxtFld.text = userName as String
+                }
+
+                // Get Profile Picture
+                let id: NSString = result.valueForKey("id") as! NSString
+                let url = NSURL(string: "https://graph.facebook.com/\(id)/picture?type=large")
+                let urlRequest = NSURLRequest(URL: url!)
+                
+                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse?, data:NSData?, error:NSError?) -> Void in
+                    
+                    // Display the image
+                    var image = UIImage(data: data!)
+                    image = image?.rounded
+                    image = image?.circle
+                    self.profileImgView.image = image
+                }
+            }
+        })
+    }
+    
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("User Logged In")
+        if ((error) != nil){
+            // Process error
+            print("\(error)")
+            
+        }else if result.isCancelled {
+            // Handle cancellations
+        }
+        else {
+            // If you ask for multiple permissions at once, you
+            // should check if specific permissions missing
+            if result.grantedPermissions.contains("email"){
+                // Do work
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User Logged Out")
+    }
+    
+    
 }
