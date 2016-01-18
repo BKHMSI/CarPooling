@@ -22,6 +22,7 @@ class User {
     var mobile:String
     var photo:UIImage?
     var points:Int?
+    var pickUpSchedule = [PickUpPin]()
     
     init(aucId:String, userName:String, password:String, mobile:String){
         self.aucId = aucId

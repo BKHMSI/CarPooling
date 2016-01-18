@@ -24,6 +24,12 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool) {
+//        let value = UIInterfaceOrientation.Portrait.rawValue
+//        UIDevice.currentDevice().setValue(value, forKey: "orientation")
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
