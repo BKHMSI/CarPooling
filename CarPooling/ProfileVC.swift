@@ -27,7 +27,7 @@ class DataCell:UITableViewCell{
     
 }
 
-class ProfileVC: UIViewController,UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIPageViewControllerDataSource {
+class ProfileVC: UIViewController,UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profilePicImgView: UIImageView!
@@ -52,7 +52,6 @@ class ProfileVC: UIViewController,UITableViewDataSource, UITableViewDelegate, MF
     }
     
     override func viewDidAppear(animated: Bool) {
-        setPageView()
     }
     
     
@@ -185,74 +184,74 @@ class ProfileVC: UIViewController,UITableViewDataSource, UITableViewDelegate, MF
     
     // MARK: -Page View Controller Delegate
     
-    func viewControllerAtIndex(index: Int) -> UIViewController{
-        
-        if ((self.pageControllerIds.count == 0) || (index >= self.pageControllerIds.count)) {
-            return ProfilePageVC()
-        }
-        
-        let vc: UIViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("ArticlesView"))!
-        return vc
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?{
-        
-        let identifier = viewController.restorationIdentifier
-        var index = self.pageControllerIds.indexOf(identifier!)
-        
-        if (index == 0 || index == NSNotFound){
-            return nil
-        }
-        
-        (index!)--
-        
-        return self.viewControllerAtIndex(index!)
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        
-        let identifier = viewController.restorationIdentifier
-        var index = self.pageControllerIds.indexOf(identifier!)
-        
-        if (index == NSNotFound){
-            return nil
-        }
-        
-        (index)!++
-        
-        if (index == self.pageControllerIds.count){
-            return nil
-        }
-        
-        return self.viewControllerAtIndex(index!)
-    }
-    
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int{
-        return self.pageControllerIds.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int{
-        return 0
-    }
-    
-    func setPageView(){
-        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
-        
-        self.pageViewController.dataSource = self
-        
-        
-        var startVC = self.viewControllerAtIndex(0) as UIViewController
-        
-        var viewControllers = NSArray(object: startVC) as! NSMutableArray as UIViewController
-    
-        self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
-        
-        self.pageViewController.view.frame = CGRectMake(0, 60, self.view.frame.width, self.view.frame.size.height-70)
-        
-        self.addChildViewController(self.pageViewController)
-        self.view.addSubview(self.pageViewController.view)
-        self.pageViewController.didMoveToParentViewController(self)
-    }
+//    func viewControllerAtIndex(index: Int) -> UIViewController{
+//        
+//        if ((self.pageControllerIds.count == 0) || (index >= self.pageControllerIds.count)) {
+//            return ProfilePageVC()
+//        }
+//        
+//        let vc: UIViewController = (self.storyboard?.instantiateViewControllerWithIdentifier("ArticlesView"))!
+//        return vc
+//    }
+//    
+//    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?{
+//        
+//        let identifier = viewController.restorationIdentifier
+//        var index = self.pageControllerIds.indexOf(identifier!)
+//        
+//        if (index == 0 || index == NSNotFound){
+//            return nil
+//        }
+//        
+//        (index!)--
+//        
+//        return self.viewControllerAtIndex(index!)
+//    }
+//    
+//    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+//        
+//        let identifier = viewController.restorationIdentifier
+//        var index = self.pageControllerIds.indexOf(identifier!)
+//        
+//        if (index == NSNotFound){
+//            return nil
+//        }
+//        
+//        (index)!++
+//        
+//        if (index == self.pageControllerIds.count){
+//            return nil
+//        }
+//        
+//        return self.viewControllerAtIndex(index!)
+//    }
+//    
+//    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int{
+//        return self.pageControllerIds.count
+//    }
+//    
+//    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int{
+//        return 0
+//    }
+//    
+//    func setPageView(){
+//        self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+//        
+//        self.pageViewController.dataSource = self
+//        
+//        
+//        var startVC = self.viewControllerAtIndex(0) as UIViewController
+////        
+////        var viewControllers = NSArray(object: startVC) as! NSMutableArray as UIViewController
+////    
+////        self.pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
+//        
+//        self.pageViewController.view.frame = CGRectMake(0, 60, self.view.frame.width, self.view.frame.size.height-70)
+//        
+//        self.addChildViewController(self.pageViewController)
+//        self.view.addSubview(self.pageViewController.view)
+//        self.pageViewController.didMoveToParentViewController(self)
+//    }
 
     
 }
