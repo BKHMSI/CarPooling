@@ -30,6 +30,12 @@ extension PFObject{
     }
 }
 
+extension String{
+    func toInt()->Int{
+        return Int(self)!
+    }
+}
+
 class PickUpPin: NSObject, MKAnnotation {
 
     var coordinate: CLLocationCoordinate2D
@@ -39,10 +45,6 @@ class PickUpPin: NSObject, MKAnnotation {
     var driverID: String
     
     var title:String?{
-        let range = driverName.rangeOfString("@aucegypt.edu")
-        if let range = range {
-            driverName.removeRange(range)
-        }
         return driverName
     }
     
@@ -59,17 +61,54 @@ class PickUpPin: NSObject, MKAnnotation {
         super.init()
     }
     
-    func savePinToParse(){
+    func savePinToParseAsPickUpPinAndConnectItToUserWithCurrentUser(){
+        
         let location = PFGeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let DateAndTimeArray = pickUpTime.componentsSeparatedByString(" ")
+        let day = DateAndTimeArray[0]
+        let time = DateAndTimeArray[1].toInt()
         let pin = PFObject(className: "PickUpSpots")
-        pin["pickUpLocation"] = location
-        pin["pickUpTime"] = pickUpTime
-        let currentUser = PFUser(withoutDataWithObjectId: PFUser.currentUser()?.objectId)
-        pin["driver"] = currentUser
+        let currentUserPointer = PFUser(withoutDataWithObjectId: PFUser.currentUser()?.objectId)
+
+        pin["Location"] = location
+        pin["TimeInSeconds"] = time
+        pin["Day"] = day
+        pin["driver"] = currentUserPointer
+        
         pin.saveInBackgroundWithBlock({
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                // The object has been saved.
+                //connectUser
+                let currentUserReference = PFUser.currentUser()
+                currentUserPointer.addObject(pin, forKey: "PickUpSchedule")
+                currentUserPointer.saveInBackground()
+            } else {
+                // There was a problem, check error.description
+            }
+        })
+    }
+    
+    func savePinToParseAsDropOffPinAndConnectItToUserWithCurrentUser(){
+        
+        let location = PFGeoPoint(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        let DateAndTimeArray = pickUpTime.componentsSeparatedByString(" ")
+        let day = DateAndTimeArray[0]
+        let time = DateAndTimeArray[1].toInt()
+        let pin = PFObject(className: "DropOffSpots")
+        let currentUserPointer = PFUser(withoutDataWithObjectId: PFUser.currentUser()?.objectId)
+        
+        pin["Location"] = location
+        pin["TimeInSeconds"] = time
+        pin["Day"] = day
+        pin["driver"] = currentUserPointer
+        
+        pin.saveInBackgroundWithBlock({
+            (success: Bool, error: NSError?) -> Void in
+            if (success) {
+                //connectUser
+                let currentUserReference = PFUser.currentUser()
+                currentUserPointer.addObject(pin, forKey: "DropOffSchedule")
+                currentUserPointer.saveInBackground()
             } else {
                 // There was a problem, check error.description
             }
