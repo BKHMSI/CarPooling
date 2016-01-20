@@ -47,9 +47,19 @@ class DropOffScheduleVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if UIDevice.currentDevice().valueForKey("orientation") as! Int != UIInterfaceOrientation.LandscapeLeft.rawValue {
+            UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func convertToTimeString(value:Float)->String{
         let valueStr = "\(value)"
-        let timeArr = valueStr.characters.split{$0 == "."}.map(String.init)
+        let timeArr = valueStr.componentsSeparatedByString(".");
         var hours = Int(timeArr[0])!
         let minutes = Int(Float("0."+timeArr[1])!*60) - Int(Float("0."+timeArr[1])!*60)%5
         let am_pm_identifier : String?
@@ -138,12 +148,7 @@ class DropOffScheduleVC: UIViewController {
             customLocationLabel.text = mapVC.pointAnnotation.title
         }
     }
-    
-    override func viewWillAppear(animated: Bool) {
-        if UIDevice.currentDevice().valueForKey("orientation") as! Int != UIInterfaceOrientation.LandscapeLeft.rawValue {
-            UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
-        }
-    }
+
     
     // MARK: - Navigation
     
@@ -151,9 +156,5 @@ class DropOffScheduleVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     }
     
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 
 }
