@@ -11,6 +11,12 @@ import UIKit
 import Social
 import Parse
 
+extension String {
+    func isAUC() -> Bool {
+        return self.containsString("@aucegypt.edu")
+    }
+}
+
 class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var profileLbl: UILabel!
