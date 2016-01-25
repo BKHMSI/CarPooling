@@ -36,7 +36,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if(PFUser.currentUser() != nil){
-            self.performSegueWithIdentifier("goToAppSegue", sender: self)
+            //self.performSegueWithIdentifier("goToAppSegue", sender: self)
         }
     }
     

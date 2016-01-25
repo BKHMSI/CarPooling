@@ -25,6 +25,7 @@ class User {
     var points:Int?
     var pickUpSchedule = [PickUpPin]()
     var dropOffSchedule = [PickUpPin]()
+    var useFacebook:Bool?
     
     init(aucId:String, userName:String, password:String, mobile:String,name : String){
         fullName = name

@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import Parse
 import CoreData
+import FBSDKLoginKit
+
 
 
 extension String{
@@ -75,8 +77,6 @@ class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var mobileTxtFld: UITextField!
     @IBOutlet weak var profileImgView: UIImageView!
     @IBOutlet weak var fbBtn: FBSDKLoginButton!
-
-
     @IBOutlet weak var fullNameTxtFld: UITextField!
     
     var userSingelton = User.sharedInstance
@@ -89,8 +89,7 @@ class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
             displayUserData()
         }else{
             fbBtn = FBSDKLoginButton()
-            fbBtn.readPermissions = ["public_profile", "email", "user_friends","user_birthday","user_about_me","user_posts"]
-            fbBtn.delegate = self
+            //fbBtn.delegate = self
         }
         
     }
@@ -319,6 +318,7 @@ class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
             // Handle cancellations
         }
         else {
+            displayUserData()
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email"){
