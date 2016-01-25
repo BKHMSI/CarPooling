@@ -15,19 +15,35 @@ extension PFUser{
 }
 
 class User {
-    static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "")
+    static let sharedInstance = User(aucId: "",userName: "",password: "",mobile: "", name: "")
+    var fullName:String
     var aucId:String 
     var userName:String
     var password:String?
     var mobile:String
     var photo:UIImage?
     var points:Int?
+    var pickUpSchedule = [PickUpPin]()
+    var dropOffSchedule = [PickUpPin]()
     
-    init(aucId:String, userName:String, password:String, mobile:String){
+    init(aucId:String, userName:String, password:String, mobile:String,name : String){
+        fullName = name
         self.aucId = aucId
         self.userName = userName
         self.password = password
         self.mobile = mobile
+    }
+    
+    func savePickUpSchedule() {
+        for eachPin in pickUpSchedule {
+            eachPin.savePinToParseAsPickUpPinAndConnectItToUserWithCurrentUser()
+        }
+    }
+    
+    func saveDropOffSchedule() {
+        for eachPin in pickUpSchedule {
+            eachPin.savePinToParseAsDropOffPinAndConnectItToUserWithCurrentUser()
+        }
     }
     
     // MARK: Getters
@@ -52,6 +68,10 @@ class User {
         return points != nil ? points!:0
     }
     
+    func getFullName()->String{
+        return fullName
+    }
+    
     
     // MARK: Setters
     
@@ -73,6 +93,10 @@ class User {
     
     func setPhoto(photo:UIImage){
         self.photo = photo
+    }
+    
+    func setFullName(name:String){
+        self.fullName = name
     }
 
 }

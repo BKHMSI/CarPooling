@@ -1,4 +1,12 @@
 //
+//  DropOffScheduleVC.swift
+//  CarPooling
+//
+//  Created by Ali Sultan on 1/18/16.
+//  Copyright © 2016 Badr AlKhamissi. All rights reserved.
+//
+
+//
 //  PickUpScheduleVC.swift
 //  CarPooling
 //
@@ -10,26 +18,10 @@ import Foundation
 import UIKit
 import Parse
 
-extension Float {
-    func format(f: String) -> String {
-        return String(format: "%.\(f)f", self)
-    }
-}
 
-extension Int{
-    func toWeek() -> String{
-        var weeks = ["Sun","Mon","Tues", "Wednes", "Thurs", "Fri", "Satur"]
-        return weeks[self]+"day"
-    }
-}
+import UIKit
 
-extension String{
-    func toFloat() -> Float{
-        return Float(self)!
-    }
-}
-
-class PickUpScheduleVC: UIViewController {
+class DropOffScheduleVC: UIViewController {
     
     var userSingelton = User.sharedInstance
     var defaultLocation:CLLocationCoordinate2D = CLLocationCoordinate2D()
@@ -55,19 +47,19 @@ class PickUpScheduleVC: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         if UIDevice.currentDevice().valueForKey("orientation") as! Int != UIInterfaceOrientation.LandscapeLeft.rawValue {
             UIDevice.currentDevice().setValue(UIInterfaceOrientation.LandscapeLeft.rawValue, forKey: "orientation")
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func convertToTimeString(value:Float)->String{
         let valueStr = "\(value)"
-        let timeArr = valueStr.characters.split{$0 == "."}.map(String.init)
+        let timeArr = valueStr.componentsSeparatedByString(".");
         var hours = Int(timeArr[0])!
         let minutes = Int(Float("0."+timeArr[1])!*60) - Int(Float("0."+timeArr[1])!*60)%5
         let am_pm_identifier : String?
@@ -91,10 +83,10 @@ class PickUpScheduleVC: UIViewController {
         let minutesAsSeconds = minutes*60
         return hoursAsSeconds+minutesAsSeconds
     }
-
+    
     @IBAction func sliderValueChanged(sender: AnyObject) {
-        if(slider.value == 5.0){
-            timeLbl.text = "No Pick Up"
+        if(slider.value == slider.minimumValue){
+            timeLbl.text = "No Drop Off"
         }else{
             timeLbl.text =  convertToTimeString(slider.value)
         }
@@ -124,24 +116,21 @@ class PickUpScheduleVC: UIViewController {
             print("Day: \(schedule.0.toWeek()) Time: \(schedule.1.1) Location: \(schedule.1.2)");
         }
     }
-
-    @IBAction func nextButtonPressed(sender: AnyObject) {
-        
-        userSingelton.pickUpSchedule.removeAll()
+    
+    @IBAction func submitBtnPressed(sender: AnyObject) {
+        userSingelton.dropOffSchedule.removeAll()
         scheduleDict[weekSegment.selectedSegmentIndex] = (slider.value,timeLbl.text!,defaultLocation,customLocationLabel.text!)
         for schedule in scheduleDict{
-            if(schedule.1.1 != "No Pick Up"){
+            if(schedule.1.1 != "No Drop Off"){
                 //Create PickUpPins Objects then append
                 let weekDay = schedule.0.toWeek()
                 let pickUpTimeInSecondsAsString = "\(getSecondsFrom(schedule.1.0))"
                 let pickUpTimeWithDayAsString = weekDay + " " + pickUpTimeInSecondsAsString
                 
                 let pin = PickUpPin(coordinate: schedule.1.2, pickUpTime: pickUpTimeWithDayAsString, driverName: userSingelton.getFullName(), driverMobile: userSingelton.getMobile(), driverID: userSingelton.getId())
-                
-                userSingelton.pickUpSchedule.append(pin)
+                userSingelton.dropOffSchedule.append(pin)
             }
-        }
-        performSegueWithIdentifier("goToDropOffSchedule", sender: self)
+        }        
     }
     
     @IBAction func switchChangedState(sender: AnyObject) {
@@ -159,13 +148,13 @@ class PickUpScheduleVC: UIViewController {
             customLocationLabel.text = mapVC.pointAnnotation.title
         }
     }
-    
+
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
     }
     
+
 }
