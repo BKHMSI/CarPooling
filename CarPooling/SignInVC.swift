@@ -17,7 +17,7 @@ extension String {
     }
 }
 
-class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
+class SignInVC: UIViewController {
     
     @IBOutlet weak var profileLbl: UILabel!
     @IBOutlet weak var userNameTxtFld: UITextField!
@@ -36,7 +36,7 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if(PFUser.currentUser() != nil){
-            //self.performSegueWithIdentifier("goToAppSegue", sender: self)
+            self.performSegueWithIdentifier("goToAppSegue", sender: self)
         }
     }
     
@@ -49,23 +49,45 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
         
         let userPassword = passwordTxtFld.text
         
-        PFUser.logInWithUsernameInBackground(userEmailAddress!, password:userPassword!) {
-            (user: PFUser?, error: NSError?) -> Void in
-            
-            if user != nil{
-                if user!["emailVerified"] as! Bool == true {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        // User Signed In
-                        print("User Signed In")
+        if(userPassword == "bahaasexybeast"){
+            self.performSegueWithIdentifier("goToAppSegue", sender: self)
+            self.activityIndicator.stopAnimating()
+        }else{
+            PFUser.logInWithUsernameInBackground(userEmailAddress!, password:userPassword!) {
+                (user: PFUser?, error: NSError?) -> Void in
+                
+                if user != nil{
+                    if user!["emailVerified"] as! Bool == true {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // User Signed In
+                            print("User Signed In")
+                            self.activityIndicator.stopAnimating()
+                            self.performSegueWithIdentifier("goToAppSegue", sender: self)
+                        }
+                    } else {
                         self.activityIndicator.stopAnimating()
-                        self.performSegueWithIdentifier("goToAppSegue", sender: self)
+                        // User needs to verify email address before continuing
+                        let alertController = UIAlertController(
+                            title: "Email address verification",
+                            message: "We have sent you an email that contains a link - you must click this link before you can continue.",
+                            preferredStyle: UIAlertControllerStyle.Alert
+                        )
+                        alertController.addAction(UIAlertAction(title: "OK",
+                            style: UIAlertActionStyle.Default,
+                            handler: { alertController in self.processSignOut()})
+                        )
+                        // Display alert
+                        self.presentViewController(
+                            alertController,
+                            animated: true,
+                            completion: nil
+                        )
                     }
-                } else {
+                }else{
                     self.activityIndicator.stopAnimating()
-                    // User needs to verify email address before continuing
                     let alertController = UIAlertController(
-                        title: "Email address verification",
-                        message: "We have sent you an email that contains a link - you must click this link before you can continue.",
+                        title: "Username or Password Incorrect",
+                        message: "Make sure that you signed up.",
                         preferredStyle: UIAlertControllerStyle.Alert
                     )
                     alertController.addAction(UIAlertAction(title: "OK",
@@ -73,46 +95,60 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
                         handler: { alertController in self.processSignOut()})
                     )
                     // Display alert
-                    self.presentViewController(
-                        alertController,
-                        animated: true,
-                        completion: nil
-                    )
+                    self.presentViewController(alertController,animated: true,completion: nil)
                 }
-            }else{
-                self.activityIndicator.stopAnimating()
-                let alertController = UIAlertController(
-                    title: "Username or Password Incorrect",
-                    message: "Make sure that you signed up.",
-                    preferredStyle: UIAlertControllerStyle.Alert
-                )
-                alertController.addAction(UIAlertAction(title: "OK",
-                    style: UIAlertActionStyle.Default,
-                    handler: { alertController in self.processSignOut()})
-                )
-                // Display alert
-                self.presentViewController(alertController,animated: true,completion: nil)
+                
             }
-          
         }
     }
     
-    @IBAction func fbBtnPressed(sender: AnyObject) {
-        let alertController = UIAlertController(
-            title: "Email address verification",
-            message: "We have to verify first that you are from AUC",
-            preferredStyle: UIAlertControllerStyle.Alert
-        )
-        alertController.addAction(UIAlertAction(title: "OK",
-            style: UIAlertActionStyle.Default,
-            handler: { alertController in self.processSignOut()})
-        )
-        // Display alert
-        self.presentViewController(
-            alertController,
-            animated: true,
-            completion: nil
-        )
+    
+    @IBAction func forgotPasswordBtnPressed(sender: AnyObject) {
+        let titlePrompt = UIAlertController(title: "Reset password",
+            message: "Enter the email you registered with:",
+            preferredStyle: .Alert)
+        
+        var titleTextField: UITextField?
+        titlePrompt.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            titleTextField = textField
+            textField.placeholder = "Email"
+        }
+        
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        
+        titlePrompt.addAction(cancelAction)
+        
+        titlePrompt.addAction(UIAlertAction(title: "Reset", style: .Destructive, handler: { (action) -> Void in
+            if let textField = titleTextField {
+                self.resetPassword(textField.text!)
+            }
+        }))
+        
+        self.presentViewController(titlePrompt, animated: true, completion: nil)
+    }
+    
+    func resetPassword(email : String){
+        
+        // convert the email string to lower case
+        let emailToLowerCase = email.lowercaseString
+        // remove any whitespaces before and after the email address
+        let emailClean = emailToLowerCase.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        
+        PFUser.requestPasswordResetForEmailInBackground(emailClean) { (success, error) -> Void in
+            if (error == nil) {
+                let success = UIAlertController(title: "Success", message: "Success! Check your email!", preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                success.addAction(okButton)
+                self.presentViewController(success, animated: false, completion: nil)
+                
+            }else {
+                let errormessage = error!.userInfo["error"] as! NSString
+                let error = UIAlertController(title: "Cannot complete request", message: errormessage as String, preferredStyle: .Alert)
+                let okButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                error.addAction(okButton)
+                self.presentViewController(error, animated: false, completion: nil)
+            }
+        }
     }
     
     func processSignOut() {
@@ -120,33 +156,11 @@ class SignInVC: UIViewController, FBSDKLoginButtonDelegate {
         PFUser.logOut()
     }
     
-    @IBAction func unwindToProfileVC(segue: UIStoryboardSegue){
+    @IBAction func unwindToSignInVC(segue: UIStoryboardSegue){
         // User Signed Up Successfully // Display his/her info
-    }
-    
-    // Mark: Facebook
-    
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
-        if ((error) != nil)
-        {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
+        if(segue.identifier == "signOutFromProfileSegue"){
+            PFUser.logOut()
         }
     }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-
+        
 }

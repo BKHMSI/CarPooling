@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		410325831C4D827C0053C722 /* DropOffScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410325821C4D827C0053C722 /* DropOffScheduleVC.swift */; settings = {ASSET_TAGS = (); }; };
+		410325831C4D827C0053C722 /* DropOffScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410325821C4D827C0053C722 /* DropOffScheduleVC.swift */; };
 		412A19291C388B3100D602A0 /* DriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412A19281C388B3100D602A0 /* DriverVC.swift */; };
 		412A192E1C38A15C00D602A0 /* PickUpPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412A192D1C38A15C00D602A0 /* PickUpPin.swift */; };
 		41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */; };
 		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; };
+		6B04AE961C593247009DD727 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04AE951C593247009DD727 /* ScheduleVC.swift */; };
 		6B1112051C4A8CB200AF2291 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112041C4A8CB200AF2291 /* FBAudienceNetwork.framework */; };
 		6B1112091C4A8CC300AF2291 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112061C4A8CC300AF2291 /* FBSDKCoreKit.framework */; };
 		6B11120A1C4A8CC300AF2291 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112071C4A8CC300AF2291 /* FBSDKLoginKit.framework */; };
@@ -28,6 +29,8 @@
 		6B39376D1C2EC03F0012F534 /* CarPoolingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39376C1C2EC03F0012F534 /* CarPoolingUITests.swift */; };
 		6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377A1C2F1D410012F534 /* ExploreVC.swift */; };
 		6B39377D1C2F25020012F534 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B39377C1C2F25020012F534 /* User.swift */; };
+		6B5539911C623BD300CB1B5C /* ProfileDataTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5539901C623BD300CB1B5C /* ProfileDataTableVC.swift */; };
+		6B5539931C62407800CB1B5C /* DayScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B5539921C62407800CB1B5C /* DayScheduleVC.swift */; };
 		6B6E8BAD1C2F3A590072962F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAB1C2F3A590072962F /* Bolts.framework */; };
 		6B6E8BAE1C2F3A590072962F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAC1C2F3A590072962F /* Parse.framework */; };
 		6B6E8BB01C2F3A980072962F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BAF1C2F3A980072962F /* AudioToolbox.framework */; };
@@ -41,6 +44,10 @@
 		6B6E8BC01C2F3B7A0072962F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BBF1C2F3B7A0072962F /* libz.tbd */; };
 		6B6E8BC21C2F3B870072962F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */; };
 		6BC579531C48674100E60A23 /* circular_profile_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BC579521C48674100E60A23 /* circular_profile_pic.png */; };
+		6BDCE2541C667324003ABF5C /* Profile_Tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BDCE2521C667324003ABF5C /* Profile_Tab.png */; };
+		6BDCE2551C667324003ABF5C /* Explore_Tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BDCE2531C667324003ABF5C /* Explore_Tab.png */; };
+		6BDCE2571C667C09003ABF5C /* SearchUsersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */; };
+		6BDCE2591C667F4E003ABF5C /* SearchUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */; };
 		6BF2FBAA1C4D0779008A64C5 /* ProfilePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF2FBA91C4D0779008A64C5 /* ProfilePageVC.swift */; };
 		6BFD9C451C2FF8060030E009 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFD9C441C2FF8060030E009 /* SignUpVC.swift */; };
 		6BFD9C471C2FFE720030E009 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFD9C461C2FFE720030E009 /* SignInVC.swift */; };
@@ -69,6 +76,7 @@
 		412A192D1C38A15C00D602A0 /* PickUpPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickUpPin.swift; path = CarPooling/PickUpPin.swift; sourceTree = "<group>"; };
 		41490F871C2F2AB200406751 /* Model_UML_Iteration_1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Model_UML_Iteration_1.pdf; sourceTree = "<group>"; };
 		41490F8A1C2F2B2600406751 /* request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = request.swift; path = CarPooling/request.swift; sourceTree = "<group>"; };
+		6B04AE951C593247009DD727 /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleVC.swift; path = CarPooling/ScheduleVC.swift; sourceTree = "<group>"; };
 		6B1112041C4A8CB200AF2291 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		6B1112061C4A8CC300AF2291 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6B1112071C4A8CC300AF2291 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -92,6 +100,8 @@
 		6B39376E1C2EC03F0012F534 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B39377A1C2F1D410012F534 /* ExploreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreVC.swift; path = CarPooling/ExploreVC.swift; sourceTree = "<group>"; };
 		6B39377C1C2F25020012F534 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = CarPooling/User.swift; sourceTree = "<group>"; };
+		6B5539901C623BD300CB1B5C /* ProfileDataTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileDataTableVC.swift; path = CarPooling/ProfileDataTableVC.swift; sourceTree = "<group>"; };
+		6B5539921C62407800CB1B5C /* DayScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleVC.swift; sourceTree = "<group>"; };
 		6B6E8BAB1C2F3A590072962F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		6B6E8BAC1C2F3A590072962F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		6B6E8BAF1C2F3A980072962F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -105,6 +115,10 @@
 		6B6E8BBF1C2F3B7A0072962F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6BC579521C48674100E60A23 /* circular_profile_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circular_profile_pic.png; sourceTree = "<group>"; };
+		6BDCE2521C667324003ABF5C /* Profile_Tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile_Tab.png; sourceTree = "<group>"; };
+		6BDCE2531C667324003ABF5C /* Explore_Tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Explore_Tab.png; sourceTree = "<group>"; };
+		6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchUsersTableVC.swift; path = CarPooling/SearchUsersTableVC.swift; sourceTree = "<group>"; };
+		6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchUsersVC.swift; path = CarPooling/SearchUsersVC.swift; sourceTree = "<group>"; };
 		6BF2FBA91C4D0779008A64C5 /* ProfilePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageVC.swift; sourceTree = "<group>"; };
 		6BFD9C441C2FF8060030E009 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = CarPooling/SignUpVC.swift; sourceTree = "<group>"; };
 		6BFD9C461C2FFE720030E009 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInVC.swift; path = CarPooling/SignInVC.swift; sourceTree = "<group>"; };
@@ -162,7 +176,12 @@
 				410325821C4D827C0053C722 /* DropOffScheduleVC.swift */,
 				6B1B6AED1C45C46100E92BE7 /* PickUpScheduleVC.swift */,
 				6B1112121C4AD8DE00AF2291 /* ProfileVC.swift */,
+				6B5539901C623BD300CB1B5C /* ProfileDataTableVC.swift */,
 				6BF2FBA91C4D0779008A64C5 /* ProfilePageVC.swift */,
+				6B04AE951C593247009DD727 /* ScheduleVC.swift */,
+				6B5539921C62407800CB1B5C /* DayScheduleVC.swift */,
+				6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */,
+				6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -215,6 +234,8 @@
 				6B3937491C2EC03F0012F534 /* AppDelegate.swift */,
 				6B39374D1C2EC03F0012F534 /* Main.storyboard */,
 				6BC579521C48674100E60A23 /* circular_profile_pic.png */,
+				6BDCE2521C667324003ABF5C /* Profile_Tab.png */,
+				6BDCE2531C667324003ABF5C /* Explore_Tab.png */,
 				6B3937531C2EC03F0012F534 /* Assets.xcassets */,
 				6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */,
 				6B3937581C2EC03F0012F534 /* Info.plist */,
@@ -374,7 +395,9 @@
 			files = (
 				6B3937571C2EC03F0012F534 /* LaunchScreen.storyboard in Resources */,
 				41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */,
+				6BDCE2551C667324003ABF5C /* Explore_Tab.png in Resources */,
 				6B3937541C2EC03F0012F534 /* Assets.xcassets in Resources */,
+				6BDCE2541C667324003ABF5C /* Profile_Tab.png in Resources */,
 				6BC579531C48674100E60A23 /* circular_profile_pic.png in Resources */,
 				6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */,
 			);
@@ -402,15 +425,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BFD9C451C2FF8060030E009 /* SignUpVC.swift in Sources */,
+				6B04AE961C593247009DD727 /* ScheduleVC.swift in Sources */,
+				6B5539931C62407800CB1B5C /* DayScheduleVC.swift in Sources */,
+				6BDCE2591C667F4E003ABF5C /* SearchUsersVC.swift in Sources */,
 				412A19291C388B3100D602A0 /* DriverVC.swift in Sources */,
 				6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */,
 				6B39377D1C2F25020012F534 /* User.swift in Sources */,
 				6B3937521C2EC03F0012F534 /* CarPooling.xcdatamodeld in Sources */,
 				412A192E1C38A15C00D602A0 /* PickUpPin.swift in Sources */,
+				6BDCE2571C667C09003ABF5C /* SearchUsersTableVC.swift in Sources */,
 				6BFD9C471C2FFE720030E009 /* SignInVC.swift in Sources */,
 				6B1B6AEE1C45C46100E92BE7 /* PickUpScheduleVC.swift in Sources */,
 				410325831C4D827C0053C722 /* DropOffScheduleVC.swift in Sources */,
 				6B39374A1C2EC03F0012F534 /* AppDelegate.swift in Sources */,
+				6B5539911C623BD300CB1B5C /* ProfileDataTableVC.swift in Sources */,
 				6BF2FBAA1C4D0779008A64C5 /* ProfilePageVC.swift in Sources */,
 				6B1112131C4AD8DE00AF2291 /* ProfileVC.swift in Sources */,
 				41490F8B1C2F2B2600406751 /* request.swift in Sources */,

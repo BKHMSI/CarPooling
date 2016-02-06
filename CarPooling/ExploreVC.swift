@@ -37,6 +37,10 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         locManager.distanceFilter=kCLDistanceFilterNone;
         locManager.requestWhenInUseAuthorization() //If authorization not given user must turn on location services for app in settings
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     /*
     - This Function is  called when the locationManager object determines current position
@@ -142,6 +146,11 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         
         // Display alert
         self.presentViewController(alertController, animated: true, completion: nil)
+
+    }
+    
+    
+    @IBAction func unwindToExploreVC(segue: UIStoryboardSegue){
 
     }
 }
