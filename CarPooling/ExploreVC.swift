@@ -15,6 +15,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     
     //Outlet for MapView
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapViewTypeSegment: UISegmentedControl!
     
     //Array of Pins denoting pickup locations, this class conforms to MKAnotations allowing it to be added to the MapView
     var pickLocations = [PickUpPin]()
@@ -59,11 +60,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     }
     
     override func viewWillAppear(animated: Bool) {
-        let aucLocation = CLLocation(latitude: 30.0195683, longitude: 31.502691)
-        let regionRadius : CLLocationDistance = 1000
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(aucLocation.coordinate,regionRadius * 2.0, regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: false)
-        locManager.startUpdatingLocation()
+        gotToCampus()
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,6 +146,24 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
 
     }
     
+    func gotToCampus(){
+        let aucLocation = CLLocation(latitude: 30.0195683, longitude: 31.502691)
+        let regionRadius : CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(aucLocation.coordinate,regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: false)
+        locManager.startUpdatingLocation()
+    }
+    
+    @IBAction func changeMapType(sender: AnyObject) {
+        let type = mapViewTypeSegment.selectedSegmentIndex
+        mapView.mapType = type == 1 ? MKMapType.Satellite:MKMapType.Standard
+    }
+    
+    @IBAction func goToCampusBtnPressed(sender: AnyObject) {
+        gotToCampus()
+    }
+    
+
     
     @IBAction func unwindToExploreVC(segue: UIStoryboardSegue){
 

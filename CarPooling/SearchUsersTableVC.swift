@@ -12,18 +12,31 @@ import UIKit
 import Parse
 import MessageUI
 
-
+class UsersDataCell:UITableViewCell{
+    
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var isActiveLbl: UILabel!
+    @IBOutlet weak var profilePicImgView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+}
 
 class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     
     
     var users = [String]()
+    var userss = [User]()
     var filteredUsers = [String]()
     var shouldShowSearchResults:Bool = false
     
     let cellIdentifier = "userCellId"
-    
-    var sampleData = ["Badr", "Bahaa", "Mai", "Candy"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,41 +47,43 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
         super.didReceiveMemoryWarning()
     }
     
-   
     func initUsers(){
         
-        for name in sampleData {
-            users.append(name)
-        }
+        let query = PFUser.query()
+        query!.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
         
         dispatch_async(dispatch_get_main_queue()){
-            let query:PFQuery = PFQuery(className: "User")
-         
-            query.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
-            query.includeKey("FullName")
             
-            query.findObjectsInBackgroundWithBlock {
+            let query = PFUser.query()
+            query!.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
+            
+            query!.findObjectsInBackgroundWithBlock {
                 
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 
                 if error == nil {
                     print("Successfully retrieved \(objects!.count) scores.")
-                    if let allObjects = objects {
-                        for user in allObjects {
-                            self.users.append(user["FullName"] as! (String))
+                    if let appUsers = objects{
+                        for user in appUsers{
+                            if((user["FullName"]) != nil){
+                                self.users.append(user["FullName"] as! String)
+                            }else{
+                                self.users.append(user["username"] as! String)
+                            }
+                            self.userss.append(User(aucId: user["AUCID"] as! String,userName: user["username"] as! String,mobile: user["Mobile"] as! String,name: user["FullName"] as! String))
                         }
+                    } else {
+                        // Log details of the failure
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
-                } else {
-                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
-            
         }
- 
+        
         // Releod Data
         self.tableView.reloadData()
     }
-
+    
     // MARK: Table View Delegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,8 +96,8 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
-        cell.textLabel?.text = shouldShowSearchResults ? filteredUsers[indexPath.row]:users[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UsersDataCell
+        cell.nameLbl.text = shouldShowSearchResults ? filteredUsers[indexPath.row]:userss[indexPath.row].fullName
         return cell
     }
     

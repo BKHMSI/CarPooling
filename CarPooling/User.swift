@@ -35,6 +35,13 @@ class User {
         self.mobile = mobile
     }
     
+    init(aucId:String, userName:String, mobile:String, name: String){
+        self.fullName = name
+        self.aucId = aucId
+        self.userName = userName
+        self.mobile = mobile
+    }
+    
     func savePickUpSchedule() {
         for eachPin in pickUpSchedule {
             eachPin.savePinToParseAsPickUpPinAndConnectItToUserWithCurrentUser()
