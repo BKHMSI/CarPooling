@@ -15,9 +15,12 @@ class SearchUsersVC: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     private var containerTableVC: SearchUsersTableVC!
-
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidden = true
+        activityIndicator.hidesWhenStopped = true
         searchBar.delegate = self
     }
     
@@ -55,7 +58,7 @@ class SearchUsersVC: UIViewController, UISearchBarDelegate {
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         containerTableVC.filteredUsers = containerTableVC.users.filter({
             (text) -> Bool in
-            let tmp: NSString = text
+            let tmp: NSString = text.fullName
             let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
             return range.location != NSNotFound
         })
@@ -65,6 +68,9 @@ class SearchUsersVC: UIViewController, UISearchBarDelegate {
             containerTableVC.shouldShowSearchResults = true;
         }
         containerTableVC.tableView.reloadData()
+    }
+    
+    @IBAction func unwindToSearchUsersSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
     }
     
 }

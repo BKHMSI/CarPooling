@@ -27,12 +27,28 @@ class DataCell:UITableViewCell{
     
 }
 
+class ScheduleCell:UITableViewCell{
+    
+    @IBOutlet weak var dataLbl: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+}
+
 class ProfileDataVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
     var userData = [String]()
     let cellIdentifier = "ProfileCell"
+    let schCellId = "ScheduleCell"
     let titleData = ["Name", "Email", "AUC ID", "Mobile"]
-    let pageControllerIds = ["UserInfoId","PickUpId", "DropOffId"]
+    let sections = ["Basic Info","Schedule"]
+    var isCurrentUser:Bool = true;
     
     
     override func viewDidLoad() {
@@ -46,16 +62,13 @@ class ProfileDataVC: UITableViewController, MFMailComposeViewControllerDelegate 
     
     
     func getData(){
-        if let user = PFUser.currentUser(){
-            userData.append("\(user["FullName"]!)")
-            userData.append("\(user.email!)")
-            userData.append("\(user["AUCID"])")
-            userData.append("\(user["Mobile"])")
-        }else{
-            userData.append("Badr AlKhamissi")
-            userData.append("badr@khamissi.com")
-            userData.append("900141572")
-            userData.append("01006520798")
+        if(isCurrentUser){
+            if let user = PFUser.currentUser(){
+                userData.append("\(user["FullName"]!)")
+                userData.append("\(user.email!)")
+                userData.append("\(user["AUCID"])")
+                userData.append("\(user["Mobile"])")
+            }
         }
     }
     
@@ -83,20 +96,25 @@ class ProfileDataVC: UITableViewController, MFMailComposeViewControllerDelegate 
     // MARK: Table View Delegate
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userData.count
+        return section == 0 ? userData.count:2
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DataCell
-        cell.titleLbl.text = titleData[indexPath.row]
-        cell.dataLbl.text = userData[indexPath.row]
-        
-        return cell
+        if(indexPath.section == 0){
+            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DataCell
+            cell.titleLbl.text = titleData[indexPath.row]
+            cell.dataLbl.text = userData[indexPath.row]
+            return cell
+        }else{
+            let cell = tableView.dequeueReusableCellWithIdentifier(schCellId, forIndexPath: indexPath) as! ScheduleCell
+            cell.dataLbl.text = indexPath.row == 0 ? "Pickup Schedule":"Dropoff Schedule"
+            return cell
+        }
     }
     
     
@@ -137,6 +155,14 @@ class ProfileDataVC: UITableViewController, MFMailComposeViewControllerDelegate 
         default:
             break
         }
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    override func tableView(tableView: UITableView,titleForHeaderInSection section: Int) -> String?{
+        return sections[section]
     }
     
     // MARK: EMAIL

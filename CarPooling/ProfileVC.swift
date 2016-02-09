@@ -14,7 +14,9 @@ import Parse
 class ProfileVC: UIViewController {
     
     @IBOutlet weak var profilePicImgView: UIImageView!
-    
+    private var containerTableVC: ProfileDataVC!
+    var isCurrentUser:Bool = true;
+
     override func viewDidLoad() {
         super.viewDidLoad()
         displayProfilePic()
@@ -22,6 +24,14 @@ class ProfileVC: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ProfileDataVC
+            where segue.identifier == "ProfileEmbedSegue" {
+                self.containerTableVC = vc
+        }
     }
     
     func displayProfilePic(){

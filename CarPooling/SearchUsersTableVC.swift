@@ -25,21 +25,19 @@ class UsersDataCell:UITableViewCell{
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
 
 class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     
     
-    var users = [String]()
-    var userss = [User]()
-    var filteredUsers = [String]()
+    var users = [User]()
+    var filteredUsers = [User]()
     var shouldShowSearchResults:Bool = false
-    
     let cellIdentifier = "userCellId"
-    
+    var selectedIndex = 0
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()  
         initUsers()
     }
     
@@ -48,7 +46,6 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     }
     
     func initUsers(){
-        
         let query = PFUser.query()
         query!.whereKey("username", notEqualTo: (PFUser.currentUser()?.username)!)
         
@@ -65,12 +62,8 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
                     print("Successfully retrieved \(objects!.count) scores.")
                     if let appUsers = objects{
                         for user in appUsers{
-                            if((user["FullName"]) != nil){
-                                self.users.append(user["FullName"] as! String)
-                            }else{
-                                self.users.append(user["username"] as! String)
-                            }
-                            self.userss.append(User(aucId: user["AUCID"] as! String,userName: user["username"] as! String,mobile: user["Mobile"] as! String,name: user["FullName"] as! String))
+                            self.users.append(User(aucId: user["AUCID"] as! String,userName: user["username"] as! String,mobile: user["Mobile"] as! String,name: user["FullName"] as! String))
+                            self.tableView.reloadData()
                         }
                     } else {
                         // Log details of the failure
@@ -79,8 +72,6 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
                 }
             }
         }
-        
-        // Releod Data
         self.tableView.reloadData()
     }
     
@@ -97,13 +88,25 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! UsersDataCell
-        cell.nameLbl.text = shouldShowSearchResults ? filteredUsers[indexPath.row]:userss[indexPath.row].fullName
+        cell.nameLbl.text = shouldShowSearchResults ? filteredUsers[indexPath.row].fullName:users[indexPath.row].fullName
         return cell
     }
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        selectedIndex = indexPath.row
+        self.performSegueWithIdentifier("GoToUserSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? OtherProfileVC
+            where segue.identifier == "GoToUserSegue" {
+                vc.fullName = users[selectedIndex].fullName
+                vc.userData.append(users[selectedIndex].fullName)
+                vc.userData.append(users[selectedIndex].userName)
+                vc.userData.append(users[selectedIndex].aucId)
+                vc.userData.append(users[selectedIndex].mobile)
+        }
     }
     
 }
