@@ -17,6 +17,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapViewTypeSegment: UISegmentedControl!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //Array of Pins denoting pickup locations, this class conforms to MKAnotations allowing it to be added to the MapView
     var pickLocations = [PickUpPin]()
     
@@ -31,6 +32,8 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidden = true
+        activityIndicator.hidesWhenStopped = true
         mapView.showsUserLocation = true;
         mapView.delegate = self
         locManager.delegate = self
@@ -102,6 +105,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
                     print("Error: \(error!) \(error!.userInfo)")
                 }
             }
+            self.activityIndicator.stopAnimating()
         }
 
     }
@@ -163,6 +167,12 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         gotToCampus()
     }
     
+    @IBAction func refreshExploreMap(sender: AnyObject) {
+        // Updates Location then Fetches Pins
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
+        locManager.startUpdatingLocation()
+    }
 
     
     @IBAction func unwindToExploreVC(segue: UIStoryboardSegue){

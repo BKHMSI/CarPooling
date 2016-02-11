@@ -26,8 +26,9 @@ class User {
     var pickUpSchedule = [PickUpPin]()
     var dropOffSchedule = [PickUpPin]()
     var useFacebook:Bool?
+    var car:Car?
     
-    init(aucId:String, userName:String, password:String, mobile:String,name : String){
+    init(aucId:String, userName:String, password:String, mobile:String, name :String){
         fullName = name
         self.aucId = aucId
         self.userName = userName
@@ -82,6 +83,10 @@ class User {
     
     
     // MARK: Setters
+    
+    func setCar(model:String, color:String){
+        car = Car(model: model, color: color)
+    }
     
     func setId(aucId:String){
         self.aucId = aucId

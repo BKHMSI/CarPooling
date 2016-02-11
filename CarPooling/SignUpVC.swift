@@ -68,7 +68,7 @@ extension UIImage {
     }
 }
 
-class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
+class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, FBSDKLoginButtonDelegate {
 
     
     @IBOutlet weak var emailTxtFld: UITextField!
@@ -79,10 +79,13 @@ class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var fbBtn: FBSDKLoginButton!
     @IBOutlet weak var fullNameTxtFld: UITextField!
     
+    let imagePicker = UIImagePickerController()
+    
     var userSingelton = User.sharedInstance
     
     override func viewDidLoad() {
         passwordTxtFld.secureTextEntry = true
+        imagePicker.delegate = self
         super.viewDidLoad()
         if (FBSDKAccessToken.currentAccessToken() != nil){
             // User is already logged in, do work such as go to next view controller.
@@ -327,9 +330,32 @@ class SignUpVC: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    @IBAction func uploadPhotoBtnPressed(sender: AnyObject) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .PhotoLibrary
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
     
+    // MARK: Image-Picker Delegate
+    
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            var image = pickedImage
+            image = image.rounded!
+            image = image.circle!
+            self.profileImgView.image = image
+        }
+        
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
