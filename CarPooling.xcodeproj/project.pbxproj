@@ -14,6 +14,10 @@
 		41490F8B1C2F2B2600406751 /* request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41490F8A1C2F2B2600406751 /* request.swift */; };
 		6B0204DE1C6A67BE007B54A3 /* OtherProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0204DD1C6A67BE007B54A3 /* OtherProfileVC.swift */; };
 		6B04AE961C593247009DD727 /* ScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B04AE951C593247009DD727 /* ScheduleVC.swift */; };
+		6B08149D1C7B796100D0833C /* sunset-cairo-egypt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B08149C1C7B796100D0833C /* sunset-cairo-egypt.jpg */; };
+		6B0814A11C7B7A1F00D0833C /* street.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0814A01C7B7A1F00D0833C /* street.jpg */; };
+		6B0814A31C7B7ABA00D0833C /* Egypt-Pyramid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0814A21C7B7ABA00D0833C /* Egypt-Pyramid.jpg */; };
+		6B0B70131C7B705B008EB739 /* cairo-egypt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B0B70121C7B705B008EB739 /* cairo-egypt.jpg */; };
 		6B1112051C4A8CB200AF2291 /* FBAudienceNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112041C4A8CB200AF2291 /* FBAudienceNetwork.framework */; };
 		6B1112091C4A8CC300AF2291 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112061C4A8CC300AF2291 /* FBSDKCoreKit.framework */; };
 		6B11120A1C4A8CC300AF2291 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B1112071C4A8CC300AF2291 /* FBSDKLoginKit.framework */; };
@@ -77,6 +81,10 @@
 		41490F8A1C2F2B2600406751 /* request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = request.swift; path = CarPooling/request.swift; sourceTree = "<group>"; };
 		6B0204DD1C6A67BE007B54A3 /* OtherProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OtherProfileVC.swift; path = CarPooling/OtherProfileVC.swift; sourceTree = "<group>"; };
 		6B04AE951C593247009DD727 /* ScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleVC.swift; path = CarPooling/ScheduleVC.swift; sourceTree = "<group>"; };
+		6B08149C1C7B796100D0833C /* sunset-cairo-egypt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sunset-cairo-egypt.jpg"; sourceTree = "<group>"; };
+		6B0814A01C7B7A1F00D0833C /* street.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = street.jpg; sourceTree = "<group>"; };
+		6B0814A21C7B7ABA00D0833C /* Egypt-Pyramid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Egypt-Pyramid.jpg"; sourceTree = "<group>"; };
+		6B0B70121C7B705B008EB739 /* cairo-egypt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cairo-egypt.jpg"; sourceTree = "<group>"; };
 		6B1112041C4A8CB200AF2291 /* FBAudienceNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBAudienceNetwork.framework; sourceTree = "<group>"; };
 		6B1112061C4A8CC300AF2291 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6B1112071C4A8CC300AF2291 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -232,6 +240,10 @@
 			isa = PBXGroup;
 			children = (
 				6B39374D1C2EC03F0012F534 /* Main.storyboard */,
+				6B08149C1C7B796100D0833C /* sunset-cairo-egypt.jpg */,
+				6B0B70121C7B705B008EB739 /* cairo-egypt.jpg */,
+				6B0814A21C7B7ABA00D0833C /* Egypt-Pyramid.jpg */,
+				6B0814A01C7B7A1F00D0833C /* street.jpg */,
 				6B3937491C2EC03F0012F534 /* AppDelegate.swift */,
 				6B3937531C2EC03F0012F534 /* Assets.xcassets */,
 				6B3937551C2EC03F0012F534 /* LaunchScreen.storyboard */,
@@ -390,8 +402,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B08149D1C7B796100D0833C /* sunset-cairo-egypt.jpg in Resources */,
+				6B0814A11C7B7A1F00D0833C /* street.jpg in Resources */,
 				6B3937571C2EC03F0012F534 /* LaunchScreen.storyboard in Resources */,
 				41490F881C2F2AB200406751 /* Model_UML_Iteration_1.pdf in Resources */,
+				6B0814A31C7B7ABA00D0833C /* Egypt-Pyramid.jpg in Resources */,
+				6B0B70131C7B705B008EB739 /* cairo-egypt.jpg in Resources */,
 				6B3937541C2EC03F0012F534 /* Assets.xcassets in Resources */,
 				6B39374F1C2EC03F0012F534 /* Main.storyboard in Resources */,
 			);

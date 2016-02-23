@@ -37,7 +37,8 @@ class SearchUsersTableVC: UITableViewController, UISearchBarDelegate{
     var selectedIndex = 0
 
     override func viewDidLoad() {
-        super.viewDidLoad()  
+        super.viewDidLoad()
+        // Check for internet connection first
         initUsers()
     }
     
