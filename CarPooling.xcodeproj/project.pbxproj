@@ -49,6 +49,7 @@
 		6B6E8BC01C2F3B7A0072962F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BBF1C2F3B7A0072962F /* libz.tbd */; };
 		6B6E8BC21C2F3B870072962F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */; };
 		6B7433F61C6D2A6300CA6038 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7433F51C6D2A6300CA6038 /* Car.swift */; };
+		6B83FF861C7F9CF0001FBCF6 /* CardRideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83FF851C7F9CF0001FBCF6 /* CardRideVC.swift */; };
 		6BDCE2571C667C09003ABF5C /* SearchUsersTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */; };
 		6BDCE2591C667F4E003ABF5C /* SearchUsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */; };
 		6BFADE081C6BF5D600690CEA /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFADE071C6BF5D500690CEA /* TabBarController.swift */; };
@@ -123,6 +124,7 @@
 		6B6E8BBF1C2F3B7A0072962F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6B6E8BC11C2F3B870072962F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6B7433F51C6D2A6300CA6038 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		6B83FF851C7F9CF0001FBCF6 /* CardRideVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardRideVC.swift; path = CarPooling/CardRideVC.swift; sourceTree = "<group>"; };
 		6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchUsersTableVC.swift; path = CarPooling/SearchUsersTableVC.swift; sourceTree = "<group>"; };
 		6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchUsersVC.swift; path = CarPooling/SearchUsersVC.swift; sourceTree = "<group>"; };
 		6BFADE071C6BF5D500690CEA /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = CarPooling/TabBarController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				6BDCE2561C667C09003ABF5C /* SearchUsersTableVC.swift */,
 				6BDCE2581C667F4E003ABF5C /* SearchUsersVC.swift */,
 				6BFADE071C6BF5D500690CEA /* TabBarController.swift */,
+				6B83FF851C7F9CF0001FBCF6 /* CardRideVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				6B7433F61C6D2A6300CA6038 /* Car.swift in Sources */,
 				6B5539931C62407800CB1B5C /* DayScheduleVC.swift in Sources */,
 				6BDCE2591C667F4E003ABF5C /* SearchUsersVC.swift in Sources */,
+				6B83FF861C7F9CF0001FBCF6 /* CardRideVC.swift in Sources */,
 				412A19291C388B3100D602A0 /* DriverVC.swift in Sources */,
 				6B39377B1C2F1D410012F534 /* ExploreVC.swift in Sources */,
 				6B39377D1C2F25020012F534 /* User.swift in Sources */,

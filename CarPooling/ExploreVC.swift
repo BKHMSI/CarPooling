@@ -21,6 +21,8 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     //Array of Pins denoting pickup locations, this class conforms to MKAnotations allowing it to be added to the MapView
     var pickLocations = [PickUpPin]()
     
+    var selectedPin = (String,String)("","")
+    
     //Location manager object used to aquire current position
     let locManager = CLLocationManager()
     
@@ -59,7 +61,6 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         mapView.setRegion(coordinateRegion, animated: false)
         locManager.stopUpdatingLocation()
         fetchPinsFromServerAtLocation(newLocation)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -84,7 +85,9 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         dispatch_async(dispatch_get_main_queue()){
             
             let query = PFQuery(className: "PickUpSpots")
-            query.whereKey("pickUpLocation", nearGeoPoint: PFGeoPoint(location: newLocation), withinKilometers: 3)
+            
+            query.whereKey("Location", nearGeoPoint: PFGeoPoint(location: newLocation), withinKilometers: 6)
+            
             query.includeKey("driver")
             
             query.findObjectsInBackgroundWithBlock {
@@ -123,6 +126,7 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
                 view.canShowCallout = true
                 view.calloutOffset = CGPoint(x: -5, y: 5)
                 view.rightCalloutAccessoryView = UIButton(type: .ContactAdd) as UIView
+                view.rightCalloutAccessoryView = UIButton(type: .InfoLight) as UIView
             }
             return view
         }
@@ -131,22 +135,25 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        let name = (view.annotation?.title!)!
-        let alertController = UIAlertController(title: "Do you want to send a pick request to \(name)?",
-            message: nil,
-            preferredStyle: UIAlertControllerStyle.Alert
-        )
-        alertController.addAction(UIAlertAction(title: "Send",
-            style: UIAlertActionStyle.Default,
-            handler: { alertController in print("Send Request")})
-        )
-        alertController.addAction(UIAlertAction(title: "Cancel",
-            style: UIAlertActionStyle.Default,
-            handler: nil)
-        )
+//        let name = (view.annotation?.title!)!
+//        let alertController = UIAlertController(title: "Do you want to send a pick request to \(name)?",
+//            message: nil,
+//            preferredStyle: UIAlertControllerStyle.Alert
+//        )
+//        alertController.addAction(UIAlertAction(title: "Send",
+//            style: UIAlertActionStyle.Default,
+//            handler: { alertController in print("Send Request")})
+//        )
+//        alertController.addAction(UIAlertAction(title: "Cancel",
+//            style: UIAlertActionStyle.Default,
+//            handler: nil)
+//        )
+//        
+//        // Display alert
+//        self.presentViewController(alertController, animated: true, completion: nil)
         
-        // Display alert
-        self.presentViewController(alertController, animated: true, completion: nil)
+        selectedPin = ((view.annotation?.title!)!, ((view.annotation?.subtitle)!)!)
+        self.performSegueWithIdentifier("goToRideCardSegue", sender: self)
 
     }
     
@@ -173,7 +180,14 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
         activityIndicator.startAnimating()
         locManager.startUpdatingLocation()
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "goToRideCardSegue"){
+            let vc = segue.destinationViewController as! CardRideVC
+            vc.name = selectedPin.0
+            vc.time = selectedPin.1
+        }
+    }
     
     @IBAction func unwindToExploreVC(segue: UIStoryboardSegue){
 

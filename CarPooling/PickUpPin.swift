@@ -14,18 +14,31 @@ import Parse
 class must confrom to MKAnnotation protocol in order for annotations to be drawn on the map
 */
 
+extension Int{
+    func secToTime()->String{
+        // Seconds:  \((self % 3600) % 60)
+         return "\((self / 3600 )):\((self % 3600) / 60)"
+    }
+}
+
 extension PFObject{
     /**
     Incredibly Dangerous if object is NOT a PickUpPin
     */
     func convertPFObjectToPickUpPin()->PickUpPin{
         let eachObject = self
-        let pickUpCoordinates = CLLocationCoordinate2D(latitude: (eachObject["pickUpLocation"] as! PFGeoPoint).latitude, longitude: (eachObject["pickUpLocation"] as! PFGeoPoint).longitude)
-        let pickUpTime = eachObject["pickUpTime"] as! String
-        let driverInfo = eachObject["driver"] as! PFUser
-        let driverName:String = driverInfo.username!
-        let driverMobile:String = driverInfo["Mobile"] as! String
-        let driverID:String = driverInfo["AUCID"] as! String
+        let pickUpCoordinates = CLLocationCoordinate2D(latitude: (eachObject["Location"] as! PFGeoPoint).latitude, longitude: (eachObject["Location"] as! PFGeoPoint).longitude)
+        let day = eachObject["Day"] as! String
+        let time = (eachObject["TimeInSeconds"] as! Int).secToTime()
+        let pickUpTime = "\(day) \(time)"
+//        let driverInfo = eachObject["driver"] as! PFUser
+//        let driverName:String = driverInfo.username!
+//        let driverMobile:String = driverInfo["Mobile"] as! String
+//        let driverID:String = driverInfo["AUCID"] as! String
+        let driverName:String = "Badr AlKhamissi"
+        let driverMobile:String = "+201006520789"
+        let driverID:String = "900141572"
+
         return PickUpPin(coordinate: pickUpCoordinates, pickUpTime: pickUpTime, driverName: driverName, driverMobile: driverMobile, driverID: driverID)
     }
 }
@@ -49,7 +62,7 @@ class PickUpPin: NSObject, MKAnnotation {
     }
     
     var subtitle:String?{
-        return  "At: \(pickUpTime) Cell: \(driverMobile)"
+        return  "\(pickUpTime)"
     }
     
     init(coordinate: CLLocationCoordinate2D, pickUpTime: String, driverName:String, driverMobile:String, driverID: String){
