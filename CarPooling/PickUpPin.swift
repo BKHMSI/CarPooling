@@ -31,13 +31,16 @@ extension PFObject{
         let day = eachObject["Day"] as! String
         let time = (eachObject["TimeInSeconds"] as! Int).secToTime()
         let pickUpTime = "\(day) \(time)"
-//        let driverInfo = eachObject["driver"] as! PFUser
-//        let driverName:String = driverInfo.username!
-//        let driverMobile:String = driverInfo["Mobile"] as! String
-//        let driverID:String = driverInfo["AUCID"] as! String
-        let driverName:String = "Badr AlKhamissi"
-        let driverMobile:String = "+201006520789"
-        let driverID:String = "900141572"
+        
+        
+        let driverInfo = eachObject["driver"] as! PFUser
+        let driverName:String = driverInfo.username!
+        let driverMobile:String = driverInfo["Mobile"] as! String
+        let driverID:String = driverInfo["AUCID"] as! String
+        
+//        let driverName:String = "Badr AlKhamissi"
+//        let driverMobile:String = "+201006520789"
+//        let driverID:String = "900141572"
 
         return PickUpPin(coordinate: pickUpCoordinates, pickUpTime: pickUpTime, driverName: driverName, driverMobile: driverMobile, driverID: driverID)
     }

@@ -16,6 +16,8 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var profilePicImgView: UIImageView!
     private var containerTableVC: ProfileDataVC!
     var isCurrentUser:Bool = true;
+    
+    var userSingelton:User = User.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,5 +58,10 @@ class ProfileVC: UIViewController {
                 }
             }
         })
+    }
+    
+    @IBAction func unwindToProfileVC(segue: UIStoryboardSegue){
+        // Save
+        userSingelton.savePickUpSchedule()
     }
 }

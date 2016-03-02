@@ -75,7 +75,6 @@ class CardRideVC: UIViewController {
     }
 
     @IBAction func sendRequestBtnPressed(sender: AnyObject) {
-        
         // Find target user
         let userQuery = PFUser.query()
         userQuery!.whereKey("FullName", equalTo: name)

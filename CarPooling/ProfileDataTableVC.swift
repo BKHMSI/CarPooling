@@ -119,42 +119,60 @@ class ProfileDataVC: UITableViewController, MFMailComposeViewControllerDelegate 
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch(indexPath.row){
+        switch(indexPath.section){
+        case 0:
+            switch(indexPath.row){
+            case 1:
+                let alertController = UIAlertController(title: "Email",
+                    message: "Do you want to send an email to \(userData[1])",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alertController.addAction(UIAlertAction(title: "Yes",
+                    style: UIAlertActionStyle.Default,
+                    handler: { alertController in
+                        self.sendEmail()
+                }))
+                alertController.addAction(UIAlertAction(title: "Cancel",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil))
+                // Display alert
+                self.presentViewController(alertController, animated: true, completion: nil)
+                break
+            case 3:
+                let alertController = UIAlertController(title: "Call",
+                    message: "Are you sure you want to call \(userData[3])",
+                    preferredStyle: UIAlertControllerStyle.Alert
+                )
+                alertController.addAction(UIAlertAction(title: "Yes",
+                    style: UIAlertActionStyle.Default,
+                    handler: { alertController in
+                        self.callNumber(self.userData[3])
+                }))
+                alertController.addAction(UIAlertAction(title: "Cancel",
+                    style: UIAlertActionStyle.Default,
+                    handler: nil))
+                // Display alert
+                self.presentViewController(alertController, animated: true, completion: nil)
+                break
+            default:
+                break
+            }
+            break;
         case 1:
-            let alertController = UIAlertController(title: "Email",
-                message: "Do you want to send an email to \(userData[1])",
-                preferredStyle: UIAlertControllerStyle.Alert
-            )
-            alertController.addAction(UIAlertAction(title: "Yes",
-                style: UIAlertActionStyle.Default,
-                handler: { alertController in
-                    self.sendEmail()
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel",
-                style: UIAlertActionStyle.Default,
-                handler: nil))
-            // Display alert
-            self.presentViewController(alertController, animated: true, completion: nil)
-            break
-        case 3:
-            let alertController = UIAlertController(title: "Call",
-                message: "Are you sure you want to call \(userData[3])",
-                preferredStyle: UIAlertControllerStyle.Alert
-            )
-            alertController.addAction(UIAlertAction(title: "Yes",
-                style: UIAlertActionStyle.Default,
-                handler: { alertController in
-                    self.callNumber(self.userData[3])
-            }))
-            alertController.addAction(UIAlertAction(title: "Cancel",
-                style: UIAlertActionStyle.Default,
-                handler: nil))
-            // Display alert
-            self.presentViewController(alertController, animated: true, completion: nil)
-            break
+            switch(indexPath.row){
+            case 0:
+                self.performSegueWithIdentifier("goToPickupFromProfileSegue", sender: self);
+                break
+            case 1:
+                self.performSegueWithIdentifier("goToDropOffFromProfileSegue", sender: self);
+                break
+            default:
+                break
+            }
         default:
-            break
+            break;
         }
+        
     }
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

@@ -127,6 +127,11 @@ class PickUpScheduleVC: UIViewController {
 
     @IBAction func nextButtonPressed(sender: AnyObject) {
         
+        saveToUserPickUpSchedule()
+        performSegueWithIdentifier("goToDropOffSchedule", sender: self)
+    }
+    
+    func saveToUserPickUpSchedule(){
         userSingelton.pickUpSchedule.removeAll()
         scheduleDict[weekSegment.selectedSegmentIndex] = (slider.value,timeLbl.text!,defaultLocation,customLocationLabel.text!)
         for schedule in scheduleDict{
@@ -141,7 +146,6 @@ class PickUpScheduleVC: UIViewController {
                 userSingelton.pickUpSchedule.append(pin)
             }
         }
-        performSegueWithIdentifier("goToDropOffSchedule", sender: self)
     }
     
     @IBAction func switchChangedState(sender: AnyObject) {
@@ -165,7 +169,10 @@ class PickUpScheduleVC: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if(segue.destinationViewController is ProfileVC){
+            saveToUserPickUpSchedule() 
+            userSingelton.savePickUpSchedule()
+        }
     }
     
 }

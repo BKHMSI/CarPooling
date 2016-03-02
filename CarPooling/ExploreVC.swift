@@ -134,24 +134,6 @@ class ExploreVC : UIViewController,MKMapViewDelegate, CLLocationManagerDelegate 
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-//        let name = (view.annotation?.title!)!
-//        let alertController = UIAlertController(title: "Do you want to send a pick request to \(name)?",
-//            message: nil,
-//            preferredStyle: UIAlertControllerStyle.Alert
-//        )
-//        alertController.addAction(UIAlertAction(title: "Send",
-//            style: UIAlertActionStyle.Default,
-//            handler: { alertController in print("Send Request")})
-//        )
-//        alertController.addAction(UIAlertAction(title: "Cancel",
-//            style: UIAlertActionStyle.Default,
-//            handler: nil)
-//        )
-//        
-//        // Display alert
-//        self.presentViewController(alertController, animated: true, completion: nil)
-        
         selectedPin = ((view.annotation?.title!)!, ((view.annotation?.subtitle)!)!)
         self.performSegueWithIdentifier("goToRideCardSegue", sender: self)
 
